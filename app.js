@@ -231,6 +231,28 @@ const CLASS_COLORS = {
     document.getElementById("pvp-no-match").hidden = shown > 0;
   }
 
+  // ----- Home page: guild snapshot -----
+  function showSnapshot() {
+    const box = document.getElementById("snapshot");
+    if (!box) return;
+    const levels = data.players.map(p => p.stats.level).filter(l => typeof l === "number");
+    // Max level is read from the roster, so it keeps working when the cap changes
+    const cap = levels.length ? Math.max(...levels) : null;
+    const atCap = cap === null ? 0 : levels.filter(l => l === cap).length;
+    const cards = [
+      { label: "Members", value: data.players.length },
+      { label: cap === null ? "At max level" : `At level ${cap}`, value: atCap },
+    ];
+    box.innerHTML = "";
+    cards.forEach(c => {
+      const el = document.createElement("div");
+      el.className = "stat-card";
+      el.innerHTML = `<span class="stat-label"></span><span class="stat-value">${c.value.toLocaleString()}</span>`;
+      el.querySelector(".stat-label").textContent = c.label;
+      box.appendChild(el);
+    });
+  }
+
   // ----- Home page: the guild's newest achievements -----
   function timeAgo(ms) {
     const mins = Math.round((Date.now() - ms) / 60000);
@@ -341,6 +363,7 @@ const CLASS_COLORS = {
       if (tabs) showBoard(data.categories[0]);
       showRoster();
       buildPvp();
+      showSnapshot();
       showFeed();
       document.getElementById("pvp-search")?.addEventListener("input", showPvp);
       const chartTabs = document.getElementById("chart-tabs");
