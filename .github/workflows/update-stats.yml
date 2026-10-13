@@ -33,6 +33,6 @@ jobs:
           git push
           
       - name: Post to Discord
-        run: node collector/discord-test.js
+        run: node collector/post-takeovers.js
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
