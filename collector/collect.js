@@ -45,6 +45,15 @@ const CATEGORIES = [
   { key: "hearths",           label: "Times hearthed",     order: "desc", stat: "Number of times hearthed" },
   { key: "duelsWon",          label: "Duels won",          order: "desc", stat: "Duels won" },
 ];
+
+// ---------- PvP leaderboard tabs (the PvP page) ----------
+// Same settings as above. "winRate" is worked out below, not read from a stat.
+const PVP_CATEGORIES = [
+  { key: "honorKills", label: "Honorable kills", order: "desc", stat: "Total Honorable Kills" },
+  { key: "pvpDeaths",  label: "PvP deaths",      order: "desc", stat: "Total deaths from opposite faction" },
+  { key: "winRate",    label: "Win rate",        order: "desc", column: "Win %" },
+];
+const ALL_CATEGORIES = [...CATEGORIES, ...PVP_CATEGORIES];
 // ----------------------------------------
 
 const slug = s => s.trim().toLowerCase().replace(/'/g, "").replace(/\s+/g, "-");
@@ -115,9 +124,16 @@ async function collectMember(token, member) {
     },
   };
   // Fill in every tab that uses a statistic from the Statistics list
-  for (const cat of CATEGORIES) {
+  for (const cat of ALL_CATEGORIES) {
     if (cat.stat) player.stats[cat.key] = findStat(stats, cat.stat);
   }
+
+  // Win rate: share of PvP encounters they walked away from
+  const k = player.stats.honorKills, d = player.stats.pvpDeaths;
+  player.stats.winRate = (typeof k === "number" && typeof d === "number" && k + d > 0)
+    ? Math.round((k / (k + d)) * 1000) / 10
+    : null;
+
   return player;
 }
 
@@ -142,7 +158,7 @@ async function main() {
     batch.forEach(p => p && players.push(p));
   }
 
-  for (const cat of CATEGORIES) {
+  for (const cat of ALL_CATEGORIES) {
     if (cat.stat && !players.some(p => typeof p.stats[cat.key] === "number")) {
       console.warn(`No one had a value for "${cat.stat}". Check the spelling against stats-list.txt.`);
     }
@@ -154,6 +170,7 @@ async function main() {
     sampleData: false,
     updated: new Date().toISOString().slice(0, 10),
     categories: CATEGORIES,
+    pvpCategories: PVP_CATEGORIES,
     players,
   };
   fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
