@@ -231,6 +231,45 @@ const CLASS_COLORS = {
     document.getElementById("pvp-no-match").hidden = shown > 0;
   }
 
+  // ----- Home page: the guild's newest achievements -----
+  function timeAgo(ms) {
+    const mins = Math.round((Date.now() - ms) / 60000);
+    if (mins < 60) return mins <= 1 ? "just now" : `${mins} minutes ago`;
+    const hours = Math.round(mins / 60);
+    if (hours < 24) return hours === 1 ? "an hour ago" : `${hours} hours ago`;
+    const days = Math.round(hours / 24);
+    if (days === 1) return "yesterday";
+    if (days < 30) return `${days} days ago`;
+    return new Date(ms).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  }
+
+  function showFeed() {
+    const list = document.getElementById("feed");
+    if (!list) return;
+    const all = data.recent || [];
+    list.innerHTML = "";
+    if (!all.length) {
+      list.innerHTML = '<p class="no-match">No achievements recorded yet.</p>';
+      return;
+    }
+    all.forEach(a => {
+      const row = document.createElement("div");
+      row.className = "feed-row";
+      row.innerHTML = `
+        ${avatarImg(a)}
+        <span>
+          <span class="feed-line"><span class="player"></span> earned <span class="feat"></span></span>
+          <span class="meta"></span>
+        </span>
+        <span class="when">${timeAgo(a.when)}</span>`;
+      const name = armoryLink({ name: a.player, realm: a.realm }, row.querySelector(".player"));
+      name.style.color = CLASS_COLORS[a.class] || "inherit";
+      row.querySelector(".feat").textContent = a.name;
+      row.querySelector(".meta").textContent = `${a.race} ${a.class}`;
+      list.appendChild(row);
+    });
+  }
+
   // ----- Composition bar charts -----
   const BREAKDOWNS = [
     { key: "class",  label: "Class",  value: p => p.class, color: v => CLASS_COLORS[v] || "var(--bronze)" },
@@ -302,6 +341,7 @@ const CLASS_COLORS = {
       if (tabs) showBoard(data.categories[0]);
       showRoster();
       buildPvp();
+      showFeed();
       document.getElementById("pvp-search")?.addEventListener("input", showPvp);
       const chartTabs = document.getElementById("chart-tabs");
       if (chartTabs) BREAKDOWNS.forEach(bd => {
@@ -316,8 +356,13 @@ const CLASS_COLORS = {
       document.getElementById("roster-search")?.addEventListener("input", showRoster);
     })
     .catch(() => {
+      const note = "The guild data couldn't load. Check that players.json is in the same folder as the pages.";
       const t = document.getElementById("board-title");
       if (t) t.textContent = "The data couldn't load";
-      if (document.getElementById("rows")) document.getElementById("rows").innerHTML =
-        '<tr><td colspan="6">Check that players.json is in the same folder as index.html and that its name is spelled exactly the same.</td></tr>';
+      const rows = document.getElementById("rows") || document.getElementById("pvp-rows");
+      if (rows) rows.innerHTML = `<tr><td colspan="8">${note}</td></tr>`;
+      const feed = document.getElementById("feed");
+      if (feed) feed.innerHTML = `<p class="no-match">${note}</p>`;
+      const roster = document.getElementById("roster-list");
+      if (roster) roster.innerHTML = `<p class="no-match">${note}</p>`;
     });
