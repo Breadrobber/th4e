@@ -31,3 +31,8 @@ jobs:
           git add players.json
           git diff --cached --quiet || git commit -m "Update guild stats"
           git push
+          
+      - name: Post to Discord
+        run: node collector/discord-test.js
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
