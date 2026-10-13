@@ -9,7 +9,7 @@ const REALM = "sargeras";     // exactly as it appears in game, e.g. "Area 52"
 const GUILD = "not-clan";     // exactly as it appears in game, use hyphen for spaces
 const MIN_LEVEL = 10;                // min level
 const RECENT_PER_PLAYER = 5;         // newest achievements kept per character
-const RECENT_TOTAL = 10;             // how many show on the home page
+const RECENT_TOTAL = 5;             // how many show on the home page
 // ------------------------------------------------------------------
 
 const CLIENT_ID = process.env.BLIZZARD_CLIENT_ID;
