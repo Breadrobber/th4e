@@ -38,6 +38,8 @@ const CATEGORIES = [
   { key: "bgWins",            label: "Battleground wins",  order: "desc", stat: "Battlegrounds won" },
   { key: "falling",           label: "Falling deaths",     order: "desc", stat: "Deaths from falling" },
   { key: "flightPath",        label: "Flight Paths taken", order: "desc", stat: "Flight paths taken" },
+  { key: "baronKills",        label: "Baron kills",        order: "desc", stat: "Rivendare kills (Stratholme)" },
+  { key: "heroicLKkills",     label: "Lich King kills",    order: "desc", stat: "Victories over the Lich King (Heroic Icecrown 25 player)" },
   { key: "deaths",            label: "Fewest deaths",      order: "asc",  stat: "Total deaths", column: "Deaths" },
   { key: "elixirs",           label: "Elixirs consumed",   order: "desc", stat: "Elixirs consumed" },
   { key: "beverages",         label: "Beverages consumed", order: "desc", stat: "Beverages consumed" },
@@ -103,12 +105,13 @@ async function collectMember(token, member) {
   const name = encodeURIComponent(member.character.name.toLowerCase());
   const base = `/profile/wow/character/${realm}/${name}`;
 
-  const [profile, stats, mounts, media, achievements] = await Promise.all([
+  const [profile, stats, mounts, media, achievements, professions] = await Promise.all([
     api(token, base),
     api(token, `${base}/achievements/statistics`),
     api(token, `${base}/collections/mounts`),
     api(token, `${base}/character-media`),
     api(token, `${base}/achievements`),
+    api(token, `${base}/professions`),
   ]);
   if (!profile) return null;
 
@@ -130,6 +133,21 @@ async function collectMember(token, member) {
   for (const cat of ALL_CATEGORIES) {
     if (cat.stat) player.stats[cat.key] = findStat(stats, cat.stat);
   }
+
+  // Main (primary) professions, one entry per profession.
+  // Retail splits skill across expansion tiers; we keep the highest tier's
+  // numbers so "Blacksmithing" shows once however many tiers the character has.
+  player.professions = (professions?.primaries ?? []).map(p => {
+    const tiers = p.tiers ?? [];
+    const best = tiers.reduce((a, t) =>
+      (t.skill_points ?? 0) > (a?.skill_points ?? -1) ? t : a, null);
+    return {
+      name: p.profession?.name ?? "Unknown",
+      skill: best?.skill_points ?? null,
+      max: best?.max_skill_points ?? null,
+      specialization: p.specialization?.name ?? null,
+    };
+  });
 
   // The newest achievements this character finished, for the home page feed
   player.recent = (achievements?.achievements ?? [])
