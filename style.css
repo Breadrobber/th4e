@@ -225,6 +225,23 @@
     .bar-label { font-size: 0.9rem; }
   }
 
+  /* PvP table: several stat columns instead of tabs */
+  .stat-col { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.stat-col { font-weight: 700; }
+  td.stat-col.sorted { color: var(--bronze); }
+  td.stat-col:not(.sorted) { font-weight: 400; color: var(--ash); }
+  .sort-btn {
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--ash);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .sort-btn:hover { color: var(--bronze); }
+  .sort-btn[aria-pressed="true"] { color: var(--bronze); text-decoration: underline; }
+
   footer { text-align: center; color: var(--ash); font-size: 0.9rem; padding-bottom: 3rem; }
 
   @media (max-width: 520px) {
