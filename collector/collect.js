@@ -11,6 +11,7 @@ const MIN_LEVEL = 10;                // min level
 const RECENT_PER_PLAYER = 5;         // newest achievements kept per character
 const RECENT_TOTAL = 5;             // how many show on the home page
 const LEAD_CHANGES_KEPT = 5;         // lead changes remembered for the home page
+const SKIP_LEAD_CHANGES = ["itemLevel"];   // boards that never count as a lead change
 // ------------------------------------------------------------------
 
 const CLIENT_ID = process.env.BLIZZARD_CLIENT_ID;
@@ -213,7 +214,7 @@ async function main() {
   for (const cat of ALL_CATEGORIES) {
     const now = leaders[cat.key], before = previous[cat.key];
     // Only a genuine change of name counts, and never on the first run
-    if (now && before && now.name !== before.name) {
+    if (now && before && now.name !== before.name && !SKIP_LEAD_CHANGES.includes(cat.key)) {
       const taker = players.find(p => p.name === now.name);
       takeovers.push({
         label: cat.label,
