@@ -149,19 +149,19 @@
       "value": 120
     },
     "falling": {
-      "name": "Rainade",
+      "name": "Fakeperson",
       "value": 333
     },
     "flightPath": {
-      "name": "Notthursday",
+      "name": "Fakeperson",
       "value": 1981
     },
     "baronKills": {
-      "name": "Notfriday",
+      "name": "Fakeperson",
       "value": 9
     },
     "heroicLKkills": {
-      "name": "Notthursday",
+      "name": "Fakeperson",
       "value": 18
     },
     "deaths": {
@@ -177,7 +177,7 @@
       "value": 296
     },
     "foodEaten": {
-      "name": "Vesper",
+      "name": "Fakeperson",
       "value": 258
     },
     "healthstones": {
