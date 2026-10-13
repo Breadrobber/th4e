@@ -267,8 +267,9 @@ const CLASS_COLORS = {
     );
     if (!pool.length) { box.hidden = true; return; }
 
-    // Pick by date so the stat is the same all day and changes overnight
-    const day = Math.floor(Date.now() / 86400000);
+    // stat changes at midnight Eastern
+    const eastern = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+    const day = Math.floor(Date.parse(eastern) / 86400000);
     const cat = pool[day % pool.length];
 
     const ranked = data.players
