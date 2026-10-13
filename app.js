@@ -253,6 +253,56 @@ const CLASS_COLORS = {
     });
   }
 
+  // ----- Home page: stat of the day -----
+  // One board is featured each day, the same one for everyone, changing at midnight.
+  // To limit which boards can appear, list their keys here, e.g. ["fishCaught", "lold"].
+  const STAT_OF_DAY_KEYS = [];
+
+  function showStatOfDay() {
+    const box = document.getElementById("stat-of-day");
+    if (!box) return;
+    const pool = (data.categories || []).filter(c =>
+      (!STAT_OF_DAY_KEYS.length || STAT_OF_DAY_KEYS.includes(c.key)) &&
+      data.players.some(p => typeof p.stats[c.key] === "number")
+    );
+    if (!pool.length) { box.hidden = true; return; }
+
+    // Pick by date so the stat is the same all day and changes overnight
+    const day = Math.floor(Date.now() / 86400000);
+    const cat = pool[day % pool.length];
+
+    const ranked = data.players
+      .filter(p => typeof p.stats[cat.key] === "number")
+      .sort((a, b) => cat.order === "asc"
+        ? a.stats[cat.key] - b.stats[cat.key]
+        : b.stats[cat.key] - a.stats[cat.key]);
+    const top = ranked[0];
+    if (!top) { box.hidden = true; return; }
+
+    const value = top.stats[cat.key];
+    const fmt = v => cat.key === "winRate" ? v.toFixed(1) + "%" : v.toLocaleString();
+    let margin = "";
+    if (ranked[1]) {
+      const gap = Math.abs(value - ranked[1].stats[cat.key]);
+      margin = gap === 0 ? " · tied for first" : ` · ${fmt(gap)} ahead of second place`;
+    }
+
+    box.hidden = false;
+    box.innerHTML = `
+      <div class="sod-label"></div>
+      <div class="sod-body">
+        ${avatarImg(top)}
+        <span>
+          <span class="sod-line"><span class="player"></span> leads with <span class="sod-value">${fmt(value)}</span></span>
+          <span class="meta"></span>
+        </span>
+      </div>`;
+    box.querySelector(".sod-label").textContent = `Stat of the day · ${cat.label}`;
+    const name = armoryLink(top, box.querySelector(".player"));
+    name.style.color = CLASS_COLORS[top.class] || "inherit";
+    box.querySelector(".meta").textContent = `${top.race} ${top.class}${margin}`;
+  }
+
   // ----- Home page: the guild's newest achievements -----
   function timeAgo(ms) {
     const mins = Math.round((Date.now() - ms) / 60000);
@@ -364,6 +414,7 @@ const CLASS_COLORS = {
       showRoster();
       buildPvp();
       showSnapshot();
+      showStatOfDay();
       showFeed();
       document.getElementById("pvp-search")?.addEventListener("input", showPvp);
       const chartTabs = document.getElementById("chart-tabs");
