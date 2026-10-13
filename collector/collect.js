@@ -27,7 +27,7 @@ const OUTPUT = path.join(__dirname, "..", "players.json");
 //   column: (optional) the column heading, if it should differ from the label
 //   order:  "desc" = highest wins, "asc" = lowest wins
 //   stat:   the statistic's name EXACTLY as it appears in stats-list.txt
-// The first three tabs come from other parts of the API, so they have no "stat".
+// The first three tabs come from other parts of the API, so they have no "stat"
 
 const CATEGORIES = [
   //{ key: "achievementPoints", label: "Achievement points", order: "desc" },
