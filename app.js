@@ -162,6 +162,75 @@ const CLASS_COLORS = {
     });
   }
 
+  // ----- PvP table: one row per player, one column per PvP stat -----
+  // Click a column heading to rank by that stat. Opens on win rate.
+  let pvpSort = null;
+
+  function buildPvp() {
+    const head = document.getElementById("pvp-head");
+    if (!head || !data.pvpCategories) return;
+    data.pvpCategories.forEach(cat => {
+      const th = document.createElement("th");
+      th.className = "stat-col";
+      const btn = document.createElement("button");
+      btn.className = "sort-btn";
+      btn.textContent = cat.column || cat.label;
+      btn.addEventListener("click", () => { pvpSort = cat; showPvp(); });
+      th.appendChild(btn);
+      head.appendChild(th);
+    });
+    pvpSort = data.pvpCategories.find(c => c.key === "winRate") || data.pvpCategories[0];
+    showPvp();
+  }
+
+  function showPvp() {
+    const rows = document.getElementById("pvp-rows");
+    if (!rows || !data.pvpCategories) return;
+    const cats = data.pvpCategories;
+
+    document.querySelectorAll("#pvp-head .sort-btn").forEach((b, i) => {
+      b.setAttribute("aria-pressed", cats[i].key === pvpSort.key ? "true" : "false");
+    });
+
+    // Only players with a number in the sorted column are ranked
+    const sorted = data.players
+      .filter(p => typeof p.stats[pvpSort.key] === "number")
+      .sort((a, b) => pvpSort.order === "asc"
+        ? a.stats[pvpSort.key] - b.stats[pvpSort.key]
+        : b.stats[pvpSort.key] - a.stats[pvpSort.key]);
+
+    const search = document.getElementById("pvp-search").value.trim().toLowerCase();
+    rows.innerHTML = "";
+    let shown = 0, rank = 0, lastValue = null;
+    sorted.forEach((p, i) => {
+      const value = p.stats[pvpSort.key];
+      if (value !== lastValue) { rank = i + 1; lastValue = value; }
+      if (search && !p.name.toLowerCase().includes(search)) return;
+      shown++;
+      const tr = document.createElement("tr");
+      if (rank <= 3) tr.className = "top r" + rank;
+      const cells = cats.map(c => {
+        const v = p.stats[c.key];
+        const text = typeof v !== "number" ? "—"
+          : c.key === "winRate" ? v.toFixed(1) + "%"
+          : v.toLocaleString();
+        return `<td class="stat-col${c.key === pvpSort.key ? " sorted" : ""}">${text}</td>`;
+      }).join("");
+      tr.innerHTML = `
+        <td><span class="rank">${rank}</span></td>
+        <td class="class-col">${raceIcon(p)}</td>
+        <td class="class-col">${CLASS_ICONS[p.class] ? `<img class="class-icon" src="${ICON_FOLDER}${CLASS_ICONS[p.class]}" alt="${p.class}">` : ""}</td>
+        <td class="level-col">${p.stats.level ?? ""}</td>
+        <td><div class="player-cell">${avatarImg(p)}<span><span class="player"></span><span class="meta"></span></span></div></td>
+        ${cells}`;
+      const name = armoryLink(p, tr.querySelector(".player"));
+      name.style.color = CLASS_COLORS[p.class] || "inherit";
+      tr.querySelector(".meta").textContent = `${p.race} ${p.class}`;
+      rows.appendChild(tr);
+    });
+    document.getElementById("pvp-no-match").hidden = shown > 0;
+  }
+
   // ----- Composition bar charts -----
   const BREAKDOWNS = [
     { key: "class",  label: "Class",  value: p => p.class, color: v => CLASS_COLORS[v] || "var(--bronze)" },
@@ -222,20 +291,18 @@ const CLASS_COLORS = {
       if (notice) notice.hidden = !data.sampleData;
       const stamp = document.getElementById("updated");
       if (stamp) stamp.textContent = `Last updated ${data.updated}`;
-      // pvp.html marks itself with data-board="pvp" and uses the PvP tab list
-      const boardCats = document.body.dataset.board === "pvp"
-        ? (data.pvpCategories || [])
-        : data.categories;
       const tabs = document.getElementById("tabs");
-      if (tabs) boardCats.forEach(cat => {
+      if (tabs) data.categories.forEach(cat => {
         const btn = document.createElement("button");
         btn.textContent = cat.label;
         btn.dataset.key = cat.key;
         btn.addEventListener("click", () => showBoard(cat));
         tabs.appendChild(btn);
       });
-      if (tabs && boardCats.length) showBoard(boardCats[0]);
+      if (tabs) showBoard(data.categories[0]);
       showRoster();
+      buildPvp();
+      document.getElementById("pvp-search")?.addEventListener("input", showPvp);
       const chartTabs = document.getElementById("chart-tabs");
       if (chartTabs) BREAKDOWNS.forEach(bd => {
         const btn = document.createElement("button");
