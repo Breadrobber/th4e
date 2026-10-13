@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Totem Huggers — Leaderboard</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Alegreya:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="image-banner">
+    <h1><a href="index.html"><img src="images/banner.png" alt="Totem Huggers"></a></h1>
+  </header>
+
+  <nav class="menu" aria-label="Main menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
+      <li><a href="pvp.html">PvP</a></li>
+      <li><a href="roster.html">Roster</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="notice" id="notice" hidden>
+      <strong>Sample data.</strong> These are made-up players.
+    </div>
+
+    <section id="leaderboard">
+    <div class="tabs" id="tabs" role="group" aria-label="Choose a leaderboard"></div>
+    <input type="search" id="board-search" class="search" placeholder="Search players…" aria-label="Search leaderboard players by name">
+    <h2 id="board-title">Loading…</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rank</th><th class="class-col">Race</th><th class="class-col">Class</th><th class="level-col">Level</th><th>Player</th><th id="value-heading"></th></tr></thead>
+        <tbody id="rows"></tbody>
+        <tfoot id="rows-no-match" hidden><tr><td colspan="6" class="no-match">No players match that name.</td></tr></tfoot>
+      </table>
+    </div>
+    </section>
+
+  </main>
+
+  <footer id="updated"></footer>
+
+<script src="app.js"></script>
+</body>
+</html>
