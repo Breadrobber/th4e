@@ -185,6 +185,48 @@ async function main() {
   });
   recent.sort((a, b) => b.when - a.when);
 
+  // Who leads each board now
+  const leaderOf = (cats) => {
+    const out = {};
+    cats.forEach(cat => {
+      const ranked = players
+        .filter(p => typeof p.stats[cat.key] === "number")
+        .sort((a, b) => cat.order === "asc"
+          ? a.stats[cat.key] - b.stats[cat.key]
+          : b.stats[cat.key] - a.stats[cat.key]);
+      if (ranked.length) out[cat.key] = { name: ranked[0].name, value: ranked[0].stats[cat.key] };
+    });
+    return out;
+  };
+  const leaders = leaderOf(ALL_CATEGORIES);
+
+  // Compare against last run to spot anyone who has taken over a board
+  let previous = {};
+  try {
+    previous = JSON.parse(fs.readFileSync(OUTPUT, "utf8")).leaders || {};
+  } catch { /* first run, or no file yet */ }
+
+  const takeovers = [];
+  for (const cat of ALL_CATEGORIES) {
+    const now = leaders[cat.key], before = previous[cat.key];
+    // Only a genuine change of name counts, and never on the first run
+    if (now && before && now.name !== before.name) {
+      takeovers.push({
+        label: cat.label,
+        key: cat.key,
+        name: now.name,
+        value: now.value,
+        previous: before.name,
+        previousValue: before.value,
+      });
+    }
+  }
+  if (takeovers.length) {
+    takeovers.forEach(t => console.log(`${t.name} took the lead on ${t.label} from ${t.previous}`));
+  } else {
+    console.log("No leads changed hands this run.");
+  }
+
   const output = {
     guild: roster.guild.name,
     faction: roster.guild.faction?.name ?? "",
@@ -192,6 +234,8 @@ async function main() {
     updated: new Date().toISOString().slice(0, 10),
     categories: CATEGORIES,
     pvpCategories: PVP_CATEGORIES,
+    leaders,
+    takeovers,
     recent: recent.slice(0, RECENT_TOTAL),
     players,
   };
