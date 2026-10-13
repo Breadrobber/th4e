@@ -27,7 +27,6 @@ const OUTPUT = path.join(__dirname, "..", "players.json");
 //   column: (optional) the column heading, if it should differ from the label
 //   order:  "desc" = highest wins, "asc" = lowest wins
 //   stat:   the statistic's name EXACTLY as it appears in stats-list.txt
-// The first three tabs come from other parts of the API, so they have no "stat".
 
 const CATEGORIES = [
   //{ key: "achievementPoints", label: "Achievement points", order: "desc" },
@@ -38,8 +37,6 @@ const CATEGORIES = [
   { key: "bgWins",            label: "Battleground wins",  order: "desc", stat: "Battlegrounds won" },
   { key: "falling",           label: "Falling deaths",     order: "desc", stat: "Deaths from falling" },
   { key: "flightPath",        label: "Flight Paths taken", order: "desc", stat: "Flight paths taken" },
-  { key: "baronKills",        label: "Baron kills",        order: "desc", stat: "Rivendare kills (Stratholme)" },
-  { key: "heroicLKkills",     label: "Lich King kills",    order: "desc", stat: "Victories over the Lich King (Heroic Icecrown 25 player)" },
   { key: "deaths",            label: "Fewest deaths",      order: "asc",  stat: "Total deaths", column: "Deaths" },
   { key: "elixirs",           label: "Elixirs consumed",   order: "desc", stat: "Elixirs consumed" },
   { key: "beverages",         label: "Beverages consumed", order: "desc", stat: "Beverages consumed" },
@@ -50,7 +47,7 @@ const CATEGORIES = [
   { key: "duelsWon",          label: "Duels won",          order: "desc", stat: "Duels won" },
 ];
 
-// ---------- PvP leaderboard tabs (the PvP page) ----------
+// ---------- PvP leaderboard tabs ----------
 // Same settings as above. "winRate" is worked out below, not read from a stat.
 const PVP_CATEGORIES = [
   { key: "honorKills", label: "Honorable kills", order: "desc", stat: "Total Honorable Kills" },
