@@ -10,6 +10,7 @@ const GUILD = "not-clan";     // exactly as it appears in game, use hyphen for s
 const MIN_LEVEL = 10;                // min level
 const RECENT_PER_PLAYER = 5;         // newest achievements kept per character
 const RECENT_TOTAL = 5;             // how many show on the home page
+const LEAD_CHANGES_KEPT = 5;         // lead changes remembered for the home page
 // ------------------------------------------------------------------
 
 const CLIENT_ID = process.env.BLIZZARD_CLIENT_ID;
@@ -201,9 +202,11 @@ async function main() {
   const leaders = leaderOf(ALL_CATEGORIES);
 
   // Compare against last run to spot anyone who has taken over a board
-  let previous = {};
+  let previous = {}, history = [];
   try {
-    previous = JSON.parse(fs.readFileSync(OUTPUT, "utf8")).leaders || {};
+    const last = JSON.parse(fs.readFileSync(OUTPUT, "utf8"));
+    previous = last.leaders || {};
+    history = last.leadChanges || [];
   } catch { /* first run, or no file yet */ }
 
   const takeovers = [];
@@ -211,6 +214,7 @@ async function main() {
     const now = leaders[cat.key], before = previous[cat.key];
     // Only a genuine change of name counts, and never on the first run
     if (now && before && now.name !== before.name) {
+      const taker = players.find(p => p.name === now.name);
       takeovers.push({
         label: cat.label,
         key: cat.key,
@@ -218,9 +222,17 @@ async function main() {
         value: now.value,
         previous: before.name,
         previousValue: before.value,
+        class: taker?.class ?? "",
+        race: taker?.race ?? "",
+        realm: taker?.realm ?? "",
+        avatar: taker?.avatar ?? null,
+        when: Date.now(),
       });
     }
   }
+  // Newest first, keeping a short history so the home page always has something
+  const leadChanges = [...takeovers, ...history].slice(0, LEAD_CHANGES_KEPT);
+
   if (takeovers.length) {
     takeovers.forEach(t => console.log(`${t.name} took the lead on ${t.label} from ${t.previous}`));
   } else {
@@ -236,6 +248,7 @@ async function main() {
     pvpCategories: PVP_CATEGORIES,
     leaders,
     takeovers,
+    leadChanges,
     recent: recent.slice(0, RECENT_TOTAL),
     players,
   };
