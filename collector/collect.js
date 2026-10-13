@@ -8,6 +8,8 @@ const REGION = "us";                 // "us" or "eu"
 const REALM = "sargeras";     // exactly as it appears in game, e.g. "Area 52"
 const GUILD = "not-clan";     // exactly as it appears in game, use hyphen for spaces
 const MIN_LEVEL = 10;                // min level
+const RECENT_PER_PLAYER = 5;         // newest achievements kept per character
+const RECENT_TOTAL = 10;             // how many show on the home page
 // ------------------------------------------------------------------
 
 const CLIENT_ID = process.env.BLIZZARD_CLIENT_ID;
@@ -101,11 +103,12 @@ async function collectMember(token, member) {
   const name = encodeURIComponent(member.character.name.toLowerCase());
   const base = `/profile/wow/character/${realm}/${name}`;
 
-  const [profile, stats, mounts, media] = await Promise.all([
+  const [profile, stats, mounts, media, achievements] = await Promise.all([
     api(token, base),
     api(token, `${base}/achievements/statistics`),
     api(token, `${base}/collections/mounts`),
     api(token, `${base}/character-media`),
+    api(token, `${base}/achievements`),
   ]);
   if (!profile) return null;
 
@@ -127,6 +130,13 @@ async function collectMember(token, member) {
   for (const cat of ALL_CATEGORIES) {
     if (cat.stat) player.stats[cat.key] = findStat(stats, cat.stat);
   }
+
+  // The newest achievements this character finished, for the home page feed
+  player.recent = (achievements?.achievements ?? [])
+    .filter(a => a.completed_timestamp)
+    .sort((a, b) => b.completed_timestamp - a.completed_timestamp)
+    .slice(0, RECENT_PER_PLAYER)
+    .map(a => ({ name: a.achievement?.name ?? "Unknown", when: a.completed_timestamp }));
 
   // Win rate: share of PvP encounters they walked away from
   const k = player.stats.honorKills, d = player.stats.pvpDeaths;
@@ -164,6 +174,17 @@ async function main() {
     }
   }
 
+  // Merge everyone's achievements into one guild feed, newest first
+  const recent = [];
+  players.forEach(p => {
+    (p.recent || []).forEach(a => recent.push({
+      player: p.name, class: p.class, race: p.race,
+      realm: p.realm, avatar: p.avatar, name: a.name, when: a.when,
+    }));
+    delete p.recent;   // the feed holds these now; keeps players.json small
+  });
+  recent.sort((a, b) => b.when - a.when);
+
   const output = {
     guild: roster.guild.name,
     faction: roster.guild.faction?.name ?? "",
@@ -171,6 +192,7 @@ async function main() {
     updated: new Date().toISOString().slice(0, 10),
     categories: CATEGORIES,
     pvpCategories: PVP_CATEGORIES,
+    recent: recent.slice(0, RECENT_TOTAL),
     players,
   };
   fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
