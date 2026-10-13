@@ -127,6 +127,89 @@
       "column": "Win %"
     }
   ],
+  "leaders": {
+    "itemLevel": {
+      "name": "Ophana",
+      "value": 681
+    },
+    "quests": {
+      "name": "Notthursday",
+      "value": 6589
+    },
+    "lold": {
+      "name": "Rainade",
+      "value": 576
+    },
+    "cheers": {
+      "name": "Notthursday",
+      "value": 244
+    },
+    "bgWins": {
+      "name": "Rainade",
+      "value": 120
+    },
+    "falling": {
+      "name": "Rainade",
+      "value": 333
+    },
+    "flightPath": {
+      "name": "Notthursday",
+      "value": 1981
+    },
+    "baronKills": {
+      "name": "Notfriday",
+      "value": 9
+    },
+    "heroicLKkills": {
+      "name": "Notthursday",
+      "value": 18
+    },
+    "deaths": {
+      "name": "Notchief",
+      "value": 1
+    },
+    "elixirs": {
+      "name": "Notmonday",
+      "value": 563
+    },
+    "beverages": {
+      "name": "Rainade",
+      "value": 296
+    },
+    "foodEaten": {
+      "name": "Vesper",
+      "value": 258
+    },
+    "healthstones": {
+      "name": "Rainade",
+      "value": 489
+    },
+    "fishCaught": {
+      "name": "Notthursday",
+      "value": 4356
+    },
+    "hearths": {
+      "name": "Notthursday",
+      "value": 1467
+    },
+    "duelsWon": {
+      "name": "Rainade",
+      "value": 949
+    },
+    "honorKills": {
+      "name": "Rainade",
+      "value": 20660
+    },
+    "pvpDeaths": {
+      "name": "Rainade",
+      "value": 2485
+    },
+    "winRate": {
+      "name": "Sadfish",
+      "value": 96.6
+    }
+  },
+  "takeovers": [],
   "recent": [
     {
       "player": "Magnus",
