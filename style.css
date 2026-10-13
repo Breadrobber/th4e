@@ -259,6 +259,26 @@
   }
   .stat-value { display: block; font-size: 2.2rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
 
+  /* Stat of the day */
+  .sod {
+    background: var(--iron-raised);
+    border-left: 3px solid var(--bronze);
+    border-radius: 3px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .sod-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 0.6rem;
+  }
+  .sod-body { display: flex; align-items: center; gap: 0.9rem; }
+  .sod-body .avatar { width: 52px; height: 52px; }
+  .sod-line { font-size: 1.15rem; }
+  .sod-value { color: var(--bronze); font-weight: 700; }
+
   /* Recent achievements feed */
   .feed-row {
     display: grid;
