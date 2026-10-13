@@ -205,11 +205,20 @@
       "value": 2485
     },
     "winRate": {
-      "name": "Fakeperson",
+      "name": "Sadfish",
       "value": 96.6
     }
   },
-  "takeovers": [],
+  "takeovers": [
+    {
+      "label": "Win rate",
+      "key": "winRate",
+      "name": "Sadfish",
+      "value": 96.6,
+      "previous": "Fakeperson",
+      "previousValue": 96.6
+    }
+  ],
   "recent": [
     {
       "player": "Magnus",
