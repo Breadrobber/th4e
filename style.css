@@ -242,6 +242,25 @@
   .sort-btn:hover { color: var(--bronze); }
   .sort-btn[aria-pressed="true"] { color: var(--bronze); text-decoration: underline; }
 
+  /* Recent achievements feed */
+  .feed-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    background: var(--iron-raised);
+    border-radius: 3px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 6px;
+  }
+  .feed-line { font-size: 1rem; }
+  .feed-row .feat { color: var(--bronze); font-weight: 700; }
+  .feed-row .when { color: var(--ash); font-size: 0.9rem; white-space: nowrap; }
+  @media (max-width: 520px) {
+    .feed-row { grid-template-columns: auto 1fr; }
+    .feed-row .when { grid-column: 2; }
+  }
+
   footer { text-align: center; color: var(--ash); font-size: 0.9rem; padding-bottom: 3rem; }
 
   @media (max-width: 520px) {
