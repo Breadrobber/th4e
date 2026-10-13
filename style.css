@@ -279,6 +279,9 @@
   .sod-line { font-size: 1.15rem; }
   .sod-value { color: var(--bronze); font-weight: 700; }
 
+  /* Lead changes */
+  .lead-row { border-left: 3px solid var(--bronze); }
+
   /* Recent achievements feed */
   .feed-row {
     display: grid;
