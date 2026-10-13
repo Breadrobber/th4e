@@ -101,7 +101,7 @@ const CLASS_COLORS = {
         <td class="class-col">${CLASS_ICONS[p.class] ? `<img class="class-icon" src="${ICON_FOLDER}${CLASS_ICONS[p.class]}" alt="${p.class}">` : ""}</td>
         <td class="level-col">${p.stats.level ?? ""}</td>
         <td><div class="player-cell">${avatarImg(p)}<span><span class="player"></span><span class="meta"></span></span></div></td>
-        <td>${value.toLocaleString()}</td>`;
+        <td>${category.key === "winRate" ? value.toFixed(1) + "%" : value.toLocaleString()}</td>`;
       const name = armoryLink(p, tr.querySelector(".player"));
       name.style.color = CLASS_COLORS[p.class] || "inherit";
       tr.querySelector(".meta").textContent = `${p.race} ${p.class}`;
@@ -222,15 +222,19 @@ const CLASS_COLORS = {
       if (notice) notice.hidden = !data.sampleData;
       const stamp = document.getElementById("updated");
       if (stamp) stamp.textContent = `Last updated ${data.updated}`;
+      // pvp.html marks itself with data-board="pvp" and uses the PvP tab list
+      const boardCats = document.body.dataset.board === "pvp"
+        ? (data.pvpCategories || [])
+        : data.categories;
       const tabs = document.getElementById("tabs");
-      if (tabs) data.categories.forEach(cat => {
+      if (tabs) boardCats.forEach(cat => {
         const btn = document.createElement("button");
         btn.textContent = cat.label;
         btn.dataset.key = cat.key;
         btn.addEventListener("click", () => showBoard(cat));
         tabs.appendChild(btn);
       });
-      if (tabs) showBoard(data.categories[0]);
+      if (tabs && boardCats.length) showBoard(boardCats[0]);
       showRoster();
       const chartTabs = document.getElementById("chart-tabs");
       if (chartTabs) BREAKDOWNS.forEach(bd => {
