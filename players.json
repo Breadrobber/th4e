@@ -209,73 +209,7 @@
       "value": 96.6
     }
   },
-  "takeovers": [
-    {
-      "label": "Falling deaths",
-      "key": "falling",
-      "name": "Rainade",
-      "value": 333,
-      "previous": "Fakeperson",
-      "previousValue": 333,
-      "class": "Hunter",
-      "race": "Human",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
-      "when": 1791913994825
-    },
-    {
-      "label": "Flight Paths taken",
-      "key": "flightPath",
-      "name": "Notthursday",
-      "value": 1981,
-      "previous": "Fakeperson",
-      "previousValue": 1981,
-      "class": "Demon Hunter",
-      "race": "Night Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
-      "when": 1791913994825
-    },
-    {
-      "label": "Baron kills",
-      "key": "baronKills",
-      "name": "Notfriday",
-      "value": 9,
-      "previous": "Fakeperson",
-      "previousValue": 9,
-      "class": "Monk",
-      "race": "Void Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/219/168269787-avatar.jpg",
-      "when": 1791913994825
-    },
-    {
-      "label": "Lich King kills",
-      "key": "heroicLKkills",
-      "name": "Notthursday",
-      "value": 18,
-      "previous": "Fakeperson",
-      "previousValue": 18,
-      "class": "Demon Hunter",
-      "race": "Night Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
-      "when": 1791913994825
-    },
-    {
-      "label": "Food eaten",
-      "key": "foodEaten",
-      "name": "Vesper",
-      "value": 258,
-      "previous": "Fakeperson",
-      "previousValue": 258,
-      "class": "Rogue",
-      "race": "Night Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/111/163860847-avatar.jpg",
-      "when": 1791913994825
-    }
-  ],
+  "takeovers": [],
   "leadChanges": [
     {
       "label": "Falling deaths",
