@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Totem Huggers — Leaderboard</title>
+<title>Totem Huggers</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,8 @@
 
   <nav class="menu" aria-label="Main menu">
     <ul>
-      <li><a href="index.html">Leaderboard</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="leaderboard.html">Leaderboard</a></li>
       <li><a href="pvp.html">PvP</a></li>
       <li><a href="roster.html">Roster</a></li>
     </ul>
@@ -29,17 +30,9 @@
       <strong>Sample data.</strong> These are made-up players.
     </div>
 
-    <section id="leaderboard">
-    <div class="tabs" id="tabs" role="group" aria-label="Choose a leaderboard"></div>
-    <input type="search" id="board-search" class="search" placeholder="Search players…" aria-label="Search leaderboard players by name">
-    <h2 id="board-title">Loading…</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Rank</th><th class="class-col">Race</th><th class="class-col">Class</th><th class="level-col">Level</th><th>Player</th><th id="value-heading"></th></tr></thead>
-        <tbody id="rows"></tbody>
-        <tfoot id="rows-no-match" hidden><tr><td colspan="6" class="no-match">No players match that name.</td></tr></tfoot>
-      </table>
-    </div>
+    <section id="recent">
+      <h2>Recent achievements</h2>
+      <div id="feed">Loading…</div>
     </section>
 
   </main>
