@@ -5,7 +5,7 @@
 // ---------- Settings ----------
 const REGION = "us";
 const REALM = "Normal";     // as it appears in game
-const CHARACTER = "Bread-Whatever";      // first name only to start; see notes below
+const CHARACTER = "BreadWhatever";      // first name only to start; see notes below
 const GUILD = "";          // your Forever guild, if you have one yet
 // ------------------------------
 
