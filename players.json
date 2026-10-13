@@ -129,7 +129,7 @@
   ],
   "leaders": {
     "itemLevel": {
-      "name": "Fakeperson4",
+      "name": "Ophana",
       "value": 681
     },
     "quests": {
@@ -181,19 +181,19 @@
       "value": 258
     },
     "healthstones": {
-      "name": "Fakeperson",
+      "name": "Rainade",
       "value": 489
     },
     "fishCaught": {
-      "name": "Fakeperson1",
+      "name": "Notthursday",
       "value": 4356
     },
     "hearths": {
-      "name": "Fakeperson2",
+      "name": "Notthursday",
       "value": 1467
     },
     "duelsWon": {
-      "name": "Fakeperson5",
+      "name": "Rainade",
       "value": 949
     },
     "honorKills": {
@@ -205,11 +205,157 @@
       "value": 2485
     },
     "winRate": {
-      "name": "Fakeperson3",
+      "name": "Sadfish",
       "value": 96.6
     }
   },
-  "takeovers": [],
+  "takeovers": [
+    {
+      "label": "Item level",
+      "key": "itemLevel",
+      "name": "Ophana",
+      "value": 681,
+      "previous": "Fakeperson4",
+      "previousValue": 681,
+      "class": "Paladin",
+      "race": "Lightforged Draenei",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/199/201816007-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Healthstones used",
+      "key": "healthstones",
+      "name": "Rainade",
+      "value": 489,
+      "previous": "Fakeperson",
+      "previousValue": 489,
+      "class": "Hunter",
+      "race": "Human",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Fish caught",
+      "key": "fishCaught",
+      "name": "Notthursday",
+      "value": 4356,
+      "previous": "Fakeperson1",
+      "previousValue": 4356,
+      "class": "Demon Hunter",
+      "race": "Night Elf",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Times hearthed",
+      "key": "hearths",
+      "name": "Notthursday",
+      "value": 1467,
+      "previous": "Fakeperson2",
+      "previousValue": 1467,
+      "class": "Demon Hunter",
+      "race": "Night Elf",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Duels won",
+      "key": "duelsWon",
+      "name": "Rainade",
+      "value": 949,
+      "previous": "Fakeperson5",
+      "previousValue": 949,
+      "class": "Hunter",
+      "race": "Human",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Win rate",
+      "key": "winRate",
+      "name": "Sadfish",
+      "value": 96.6,
+      "previous": "Fakeperson3",
+      "previousValue": 96.6,
+      "class": "Monk",
+      "race": "Dwarf",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/244/200094452-avatar.jpg",
+      "when": 1791913151898
+    }
+  ],
+  "leadChanges": [
+    {
+      "label": "Item level",
+      "key": "itemLevel",
+      "name": "Ophana",
+      "value": 681,
+      "previous": "Fakeperson4",
+      "previousValue": 681,
+      "class": "Paladin",
+      "race": "Lightforged Draenei",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/199/201816007-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Healthstones used",
+      "key": "healthstones",
+      "name": "Rainade",
+      "value": 489,
+      "previous": "Fakeperson",
+      "previousValue": 489,
+      "class": "Hunter",
+      "race": "Human",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Fish caught",
+      "key": "fishCaught",
+      "name": "Notthursday",
+      "value": 4356,
+      "previous": "Fakeperson1",
+      "previousValue": 4356,
+      "class": "Demon Hunter",
+      "race": "Night Elf",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Times hearthed",
+      "key": "hearths",
+      "name": "Notthursday",
+      "value": 1467,
+      "previous": "Fakeperson2",
+      "previousValue": 1467,
+      "class": "Demon Hunter",
+      "race": "Night Elf",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
+      "when": 1791913151898
+    },
+    {
+      "label": "Duels won",
+      "key": "duelsWon",
+      "name": "Rainade",
+      "value": 949,
+      "previous": "Fakeperson5",
+      "previousValue": 949,
+      "class": "Hunter",
+      "race": "Human",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
+      "when": 1791913151898
+    }
+  ],
   "recent": [
     {
       "player": "Magnus",
