@@ -303,6 +303,36 @@ const CLASS_COLORS = {
     box.querySelector(".meta").textContent = `${top.race} ${top.class}${margin}`;
   }
 
+  // ----- Home page: recent lead changes -----
+  function showLeadChanges() {
+    const list = document.getElementById("lead-changes");
+    if (!list) return;
+    const all = data.leadChanges || [];
+    list.innerHTML = "";
+    if (!all.length) {
+      list.innerHTML = '<p class="no-match">No leads have changed hands yet.</p>';
+      return;
+    }
+    all.forEach(t => {
+      const fmt = v => t.key === "winRate" ? v.toFixed(1) + "%" : v.toLocaleString();
+      const row = document.createElement("div");
+      row.className = "feed-row lead-row";
+      row.innerHTML = `
+        ${avatarImg(t)}
+        <span>
+          <span class="feed-line"><span class="player"></span> took the lead in <span class="feat"></span></span>
+          <span class="meta"></span>
+        </span>
+        <span class="when">${timeAgo(t.when)}</span>`;
+      const name = armoryLink({ name: t.name, realm: t.realm }, row.querySelector(".player"));
+      name.style.color = CLASS_COLORS[t.class] || "inherit";
+      row.querySelector(".feat").textContent = t.label;
+      row.querySelector(".meta").textContent =
+        `${fmt(t.value)} · passed ${t.previous}`;
+      list.appendChild(row);
+    });
+  }
+
   // ----- Home page: the guild's newest achievements -----
   function timeAgo(ms) {
     const mins = Math.round((Date.now() - ms) / 60000);
@@ -415,6 +445,7 @@ const CLASS_COLORS = {
       buildPvp();
       showSnapshot();
       showStatOfDay();
+      showLeadChanges();
       showFeed();
       document.getElementById("pvp-search")?.addEventListener("input", showPvp);
       const chartTabs = document.getElementById("chart-tabs");
