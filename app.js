@@ -1,4 +1,3 @@
-//TEST
 const CLASS_COLORS = {
     Warrior: "#c69b6d", Paladin: "#f48cba", Hunter: "#aad372", Rogue: "#fff468",
     Priest: "#ffffff", Shaman: "#4a9eff", Mage: "#3fc7eb", Warlock: "#9fa0f5", Druid: "#ff7c0a",
