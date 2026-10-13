@@ -334,7 +334,21 @@
         "honorKills": 7709,
         "pvpDeaths": 287,
         "winRate": 96.4
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 1,
+          "max": 100,
+          "specialization": null
+        },
+        {
+          "name": "Herbalism",
+          "skill": 271,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Notmonday",
@@ -365,7 +379,21 @@
         "honorKills": 355,
         "pvpDeaths": 116,
         "winRate": 75.4
-      }
+      },
+      "professions": [
+        {
+          "name": "Skinning",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        },
+        {
+          "name": "Leatherworking",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Shine",
@@ -396,7 +424,15 @@
         "honorKills": 7281,
         "pvpDeaths": 721,
         "winRate": 91
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Wraith",
@@ -427,7 +463,15 @@
         "honorKills": 4848,
         "pvpDeaths": 493,
         "winRate": 90.8
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Karma",
@@ -458,7 +502,15 @@
         "honorKills": 5942,
         "pvpDeaths": 325,
         "winRate": 94.8
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Arc",
@@ -489,7 +541,15 @@
         "honorKills": 1416,
         "pvpDeaths": 120,
         "winRate": 92.2
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 31,
+          "max": 75,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Onyx",
@@ -520,7 +580,15 @@
         "honorKills": 6032,
         "pvpDeaths": 621,
         "winRate": 90.7
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Rainade",
@@ -551,7 +619,21 @@
         "honorKills": 20660,
         "pvpDeaths": 2485,
         "winRate": 89.3
-      }
+      },
+      "professions": [
+        {
+          "name": "Herbalism",
+          "skill": 169,
+          "max": 175,
+          "specialization": null
+        },
+        {
+          "name": "Alchemy",
+          "skill": 227,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Shayne",
@@ -582,7 +664,15 @@
         "honorKills": 5980,
         "pvpDeaths": 432,
         "winRate": 93.3
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 50,
+          "max": 75,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Vesper",
@@ -613,7 +703,21 @@
         "honorKills": 15858,
         "pvpDeaths": 796,
         "winRate": 95.2
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        },
+        {
+          "name": "Mining",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Notfriday",
@@ -644,7 +748,21 @@
         "honorKills": 3449,
         "pvpDeaths": 462,
         "winRate": 88.2
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 1,
+          "max": 300,
+          "specialization": null
+        },
+        {
+          "name": "Jewelcrafting",
+          "skill": 1,
+          "max": 100,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Topchief",
@@ -675,7 +793,8 @@
         "honorKills": null,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Notthursday",
@@ -706,7 +825,21 @@
         "honorKills": 9368,
         "pvpDeaths": 1564,
         "winRate": 85.7
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 19,
+          "max": 100,
+          "specialization": null
+        },
+        {
+          "name": "Alchemy",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Greatwizardx",
@@ -737,7 +870,8 @@
         "honorKills": 27,
         "pvpDeaths": 7,
         "winRate": 79.4
-      }
+      },
+      "professions": []
     },
     {
       "name": "Biglizard",
@@ -768,7 +902,8 @@
         "honorKills": null,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Dimfish",
@@ -799,7 +934,8 @@
         "honorKills": 1,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Notcorrupted",
@@ -830,7 +966,8 @@
         "honorKills": null,
         "pvpDeaths": 2,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Six",
@@ -861,7 +998,21 @@
         "honorKills": 7404,
         "pvpDeaths": 481,
         "winRate": 93.9
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 300,
+          "max": 300,
+          "specialization": "Gnomish Engineer"
+        },
+        {
+          "name": "Mining",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Sadfish",
@@ -892,7 +1043,15 @@
         "honorKills": 4398,
         "pvpDeaths": 153,
         "winRate": 96.6
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 1,
+          "max": 100,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Crackpants",
@@ -923,7 +1082,8 @@
         "honorKills": null,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Redheadgf",
@@ -954,7 +1114,8 @@
         "honorKills": null,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Breadrobber",
@@ -985,7 +1146,15 @@
         "honorKills": 304,
         "pvpDeaths": 26,
         "winRate": 92.1
-      }
+      },
+      "professions": [
+        {
+          "name": "Engineering",
+          "skill": 43,
+          "max": 100,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Shin",
@@ -1016,7 +1185,8 @@
         "honorKills": null,
         "pvpDeaths": 4,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Ophana",
@@ -1047,7 +1217,8 @@
         "honorKills": 1,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Notchief",
@@ -1078,7 +1249,8 @@
         "honorKills": null,
         "pvpDeaths": null,
         "winRate": null
-      }
+      },
+      "professions": []
     },
     {
       "name": "Lazyknight",
@@ -1109,7 +1281,8 @@
         "honorKills": 85,
         "pvpDeaths": 8,
         "winRate": 91.4
-      }
+      },
+      "professions": []
     },
     {
       "name": "Magnus",
@@ -1140,7 +1313,21 @@
         "honorKills": 12,
         "pvpDeaths": 6,
         "winRate": 66.7
-      }
+      },
+      "professions": [
+        {
+          "name": "Herbalism",
+          "skill": 91,
+          "max": 100,
+          "specialization": null
+        },
+        {
+          "name": "Alchemy",
+          "skill": 38,
+          "max": 100,
+          "specialization": null
+        }
+      ]
     },
     {
       "name": "Betrayedyou",
@@ -1171,7 +1358,21 @@
         "honorKills": 3,
         "pvpDeaths": 13,
         "winRate": 18.8
-      }
+      },
+      "professions": [
+        {
+          "name": "Skinning",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        },
+        {
+          "name": "Leatherworking",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     }
   ]
 }
