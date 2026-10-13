@@ -107,6 +107,26 @@
       "stat": "Duels won"
     }
   ],
+  "pvpCategories": [
+    {
+      "key": "honorKills",
+      "label": "Honorable kills",
+      "order": "desc",
+      "stat": "Total Honorable Kills"
+    },
+    {
+      "key": "pvpDeaths",
+      "label": "PvP deaths",
+      "order": "desc",
+      "stat": "Total deaths from opposite faction"
+    },
+    {
+      "key": "winRate",
+      "label": "Win rate",
+      "order": "desc",
+      "column": "Win %"
+    }
+  ],
   "players": [
     {
       "name": "Nottuesday",
@@ -135,7 +155,10 @@
         "healthstones": 41,
         "fishCaught": 91,
         "hearths": 574,
-        "duelsWon": 311
+        "duelsWon": 311,
+        "honorKills": 7709,
+        "pvpDeaths": 287,
+        "winRate": 96.4
       }
     },
     {
@@ -165,7 +188,10 @@
         "healthstones": 15,
         "fishCaught": null,
         "hearths": 63,
-        "duelsWon": 22
+        "duelsWon": 22,
+        "honorKills": 355,
+        "pvpDeaths": 116,
+        "winRate": 75.4
       }
     },
     {
@@ -195,7 +221,10 @@
         "healthstones": 147,
         "fishCaught": null,
         "hearths": 395,
-        "duelsWon": 164
+        "duelsWon": 164,
+        "honorKills": 7281,
+        "pvpDeaths": 721,
+        "winRate": 91
       }
     },
     {
@@ -225,7 +254,10 @@
         "healthstones": 73,
         "fishCaught": null,
         "hearths": 232,
-        "duelsWon": 89
+        "duelsWon": 89,
+        "honorKills": 4848,
+        "pvpDeaths": 493,
+        "winRate": 90.8
       }
     },
     {
@@ -255,7 +287,10 @@
         "healthstones": 66,
         "fishCaught": 160,
         "hearths": 152,
-        "duelsWon": 102
+        "duelsWon": 102,
+        "honorKills": 5942,
+        "pvpDeaths": 325,
+        "winRate": 94.8
       }
     },
     {
@@ -285,7 +320,10 @@
         "healthstones": 17,
         "fishCaught": null,
         "hearths": 10,
-        "duelsWon": 46
+        "duelsWon": 46,
+        "honorKills": 1416,
+        "pvpDeaths": 120,
+        "winRate": 92.2
       }
     },
     {
@@ -315,7 +353,10 @@
         "healthstones": 133,
         "fishCaught": 263,
         "hearths": 85,
-        "duelsWon": 90
+        "duelsWon": 90,
+        "honorKills": 6032,
+        "pvpDeaths": 621,
+        "winRate": 90.7
       }
     },
     {
@@ -345,7 +386,10 @@
         "healthstones": 489,
         "fishCaught": 536,
         "hearths": 1424,
-        "duelsWon": 949
+        "duelsWon": 949,
+        "honorKills": 20660,
+        "pvpDeaths": 2485,
+        "winRate": 89.3
       }
     },
     {
@@ -375,7 +419,10 @@
         "healthstones": 77,
         "fishCaught": null,
         "hearths": 185,
-        "duelsWon": 55
+        "duelsWon": 55,
+        "honorKills": 5980,
+        "pvpDeaths": 432,
+        "winRate": 93.3
       }
     },
     {
@@ -405,7 +452,10 @@
         "healthstones": 168,
         "fishCaught": 92,
         "hearths": 642,
-        "duelsWon": 222
+        "duelsWon": 222,
+        "honorKills": 15858,
+        "pvpDeaths": 796,
+        "winRate": 95.2
       }
     },
     {
@@ -435,7 +485,10 @@
         "healthstones": 21,
         "fishCaught": 727,
         "hearths": 421,
-        "duelsWon": 380
+        "duelsWon": 380,
+        "honorKills": 3449,
+        "pvpDeaths": 462,
+        "winRate": 88.2
       }
     },
     {
@@ -465,7 +518,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": 54,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -495,7 +551,10 @@
         "healthstones": 139,
         "fishCaught": 4356,
         "hearths": 1467,
-        "duelsWon": 926
+        "duelsWon": 926,
+        "honorKills": 9368,
+        "pvpDeaths": 1564,
+        "winRate": 85.7
       }
     },
     {
@@ -525,7 +584,10 @@
         "healthstones": 7,
         "fishCaught": 1,
         "hearths": 160,
-        "duelsWon": 18
+        "duelsWon": 18,
+        "honorKills": 27,
+        "pvpDeaths": 7,
+        "winRate": 79.4
       }
     },
     {
@@ -555,7 +617,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": 2,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -585,7 +650,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": 24,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": 1,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -615,7 +683,10 @@
         "healthstones": 17,
         "fishCaught": null,
         "hearths": 6,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": 2,
+        "winRate": null
       }
     },
     {
@@ -645,7 +716,10 @@
         "healthstones": 82,
         "fishCaught": 102,
         "hearths": 213,
-        "duelsWon": 69
+        "duelsWon": 69,
+        "honorKills": 7404,
+        "pvpDeaths": 481,
+        "winRate": 93.9
       }
     },
     {
@@ -675,7 +749,10 @@
         "healthstones": 34,
         "fishCaught": 2,
         "hearths": 248,
-        "duelsWon": 6
+        "duelsWon": 6,
+        "honorKills": 4398,
+        "pvpDeaths": 153,
+        "winRate": 96.6
       }
     },
     {
@@ -705,7 +782,10 @@
         "healthstones": 46,
         "fishCaught": null,
         "hearths": 14,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -735,7 +815,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": 1,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -765,7 +848,10 @@
         "healthstones": 4,
         "fishCaught": null,
         "hearths": 52,
-        "duelsWon": 38
+        "duelsWon": 38,
+        "honorKills": 304,
+        "pvpDeaths": 26,
+        "winRate": 92.1
       }
     },
     {
@@ -795,7 +881,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": 1,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": 4,
+        "winRate": null
       }
     },
     {
@@ -825,7 +914,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": null,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": 1,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -855,7 +947,10 @@
         "healthstones": null,
         "fishCaught": null,
         "hearths": null,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": null,
+        "pvpDeaths": null,
+        "winRate": null
       }
     },
     {
@@ -885,7 +980,10 @@
         "healthstones": 1,
         "fishCaught": null,
         "hearths": 44,
-        "duelsWon": 66
+        "duelsWon": 66,
+        "honorKills": 85,
+        "pvpDeaths": 8,
+        "winRate": 91.4
       }
     },
     {
@@ -915,7 +1013,10 @@
         "healthstones": null,
         "fishCaught": 59,
         "hearths": 31,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": 12,
+        "pvpDeaths": 6,
+        "winRate": 66.7
       }
     },
     {
@@ -945,7 +1046,10 @@
         "healthstones": 2,
         "fishCaught": 62,
         "hearths": 71,
-        "duelsWon": null
+        "duelsWon": null,
+        "honorKills": 3,
+        "pvpDeaths": 13,
+        "winRate": 18.8
       }
     }
   ]
