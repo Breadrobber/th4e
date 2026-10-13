@@ -209,16 +209,7 @@
       "value": 96.6
     }
   },
-  "takeovers": [
-    {
-      "label": "Win rate",
-      "key": "winRate",
-      "name": "Sadfish",
-      "value": 96.6,
-      "previous": "Fakeperson",
-      "previousValue": 96.6
-    }
-  ],
+  "takeovers": [],
   "recent": [
     {
       "player": "Magnus",
