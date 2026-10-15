@@ -151,8 +151,13 @@ const CLASS_COLORS = {
     const list = document.getElementById("cat-list");
     if (!list) return;
 
+    // pvp.html marks itself with data-board="pvp"
+    const source = document.body.dataset.board === "pvp"
+      ? (data.pvpCategories || [])
+      : (data.categories || []);
+
     groups = [];
-    (data.categories || []).forEach(cat => {
+    source.forEach(cat => {
       let g = groups.find(x => x.name === groupOf(cat));
       if (!g) groups.push(g = { name: groupOf(cat), stats: [] });
       g.stats.push(cat);
@@ -214,75 +219,6 @@ const CLASS_COLORS = {
       });
       list.appendChild(box);
     });
-  }
-
-  // ----- PvP table: one row per player, one column per PvP stat -----
-  // Click a column heading to rank by that stat. Opens on win rate.
-  let pvpSort = null;
-
-  function buildPvp() {
-    const head = document.getElementById("pvp-head");
-    if (!head || !data.pvpCategories) return;
-    data.pvpCategories.forEach(cat => {
-      const th = document.createElement("th");
-      th.className = "stat-col";
-      const btn = document.createElement("button");
-      btn.className = "sort-btn";
-      btn.textContent = cat.column || cat.label;
-      btn.addEventListener("click", () => { pvpSort = cat; showPvp(); });
-      th.appendChild(btn);
-      head.appendChild(th);
-    });
-    pvpSort = data.pvpCategories.find(c => c.key === "winRate") || data.pvpCategories[0];
-    showPvp();
-  }
-
-  function showPvp() {
-    const rows = document.getElementById("pvp-rows");
-    if (!rows || !data.pvpCategories) return;
-    const cats = data.pvpCategories;
-
-    document.querySelectorAll("#pvp-head .sort-btn").forEach((b, i) => {
-      b.setAttribute("aria-pressed", cats[i].key === pvpSort.key ? "true" : "false");
-    });
-
-    // Only players with a number in the sorted column are ranked
-    const sorted = data.players
-      .filter(p => typeof p.stats[pvpSort.key] === "number")
-      .sort((a, b) => pvpSort.order === "asc"
-        ? a.stats[pvpSort.key] - b.stats[pvpSort.key]
-        : b.stats[pvpSort.key] - a.stats[pvpSort.key]);
-
-    const search = document.getElementById("pvp-search").value.trim().toLowerCase();
-    rows.innerHTML = "";
-    let shown = 0, rank = 0, lastValue = null;
-    sorted.forEach((p, i) => {
-      const value = p.stats[pvpSort.key];
-      if (value !== lastValue) { rank = i + 1; lastValue = value; }
-      if (search && !p.name.toLowerCase().includes(search)) return;
-      shown++;
-      const tr = document.createElement("tr");
-      if (rank <= 3) tr.className = "top r" + rank;
-      const cells = cats.map(c => {
-        const v = p.stats[c.key];
-        const text = typeof v !== "number" ? "—"
-          : c.key === "winRate" ? v.toFixed(1) + "%"
-          : v.toLocaleString();
-        return `<td class="stat-col${c.key === pvpSort.key ? " sorted" : ""}">${text}</td>`;
-      }).join("");
-      tr.innerHTML = `
-        <td><span class="rank">${rank}</span></td>
-        <td class="class-col">${raceIcon(p)}</td>
-        <td class="class-col">${CLASS_ICONS[p.class] ? `<img class="class-icon" src="${ICON_FOLDER}${CLASS_ICONS[p.class]}" alt="${p.class}">` : ""}</td>
-        <td class="level-col">${p.stats.level ?? ""}</td>
-        <td><div class="player-cell">${avatarImg(p)}<span><span class="player"></span><span class="meta"></span></span></div></td>
-        ${cells}`;
-      const name = armoryLink(p, tr.querySelector(".player"));
-      name.style.color = CLASS_COLORS[p.class] || "inherit";
-      tr.querySelector(".meta").textContent = `${p.race} ${p.class}`;
-      rows.appendChild(tr);
-    });
-    document.getElementById("pvp-no-match").hidden = shown > 0;
   }
 
   // ----- Home page: guild snapshot -----
@@ -489,12 +425,10 @@ const CLASS_COLORS = {
       if (stamp) stamp.textContent = `Last updated ${data.updated}`;
       buildCategories();
       showRoster();
-      buildPvp();
       showSnapshot();
       showStatOfDay();
       showLeadChanges();
       showFeed();
-      document.getElementById("pvp-search")?.addEventListener("input", showPvp);
       const chartTabs = document.getElementById("chart-tabs");
       if (chartTabs) BREAKDOWNS.forEach(bd => {
         const btn = document.createElement("button");
@@ -511,8 +445,8 @@ const CLASS_COLORS = {
       const note = "The guild data couldn't load. Check that players.json is in the same folder as the pages.";
       const t = document.getElementById("board-title");
       if (t) t.textContent = "The data couldn't load";
-      const rows = document.getElementById("rows") || document.getElementById("pvp-rows");
-      if (rows) rows.innerHTML = `<tr><td colspan="8">${note}</td></tr>`;
+      const rows = document.getElementById("rows");
+      if (rows) rows.innerHTML = `<tr><td colspan="3">${note}</td></tr>`;
       const feed = document.getElementById("feed");
       if (feed) feed.innerHTML = `<p class="no-match">${note}</p>`;
       const roster = document.getElementById("roster-list");
