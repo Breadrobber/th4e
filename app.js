@@ -4,38 +4,6 @@ const CLASS_COLORS = {
     "Death Knight": "#e0435a", "Demon Hunter": "#c26fe0", Monk: "#00ff98", Evoker: "#4fc2a8"
   };
 
-  // Class icons in images/class_icons. Classes not listed here show no icon.
-  // File names must match exactly, capital letters included.
-  const ICON_FOLDER = "images/class_icons/";
-  const CLASS_ICONS = {
-    Warrior: "warrior.png", Paladin: "paladin.png", Hunter: "hunter.png",
-    Rogue: "rogue.png", Priest: "priest.png", Shaman: "shaman.png",
-    Mage: "mage.png", Warlock: "warlock.png", Druid: "druid.png",
-    Monk: "monk.png", "Death Knight": "deathknight.png",
-    "Demon Hunter": "demonhunter.png", Evoker: "evoker.png"
-  };
-
-  // Race icons in images/race_icons, named like "orc-male.png" or "nightelf-female.png":
-  // race in lowercase with spaces, apostrophes and hyphens removed, then -male or -female.
-  const RACE_FOLDER = "images/race_icons/";
-  // Races whose file name isn't just the race name with spaces removed
-  const RACE_FILE_NAMES = {
-    "Mag'har Orc": "maghar",
-    "Lightforged Draenei": "lightforged",
-    "Dark Iron Dwarf": "darkiron",
-    "Highmountain Tauren": "highmountain",
-    "Zandalari Troll": "zandalaritroll",
-    "Kul Tiran": "kultiranhuman",
-    "Earthen": "earthen",
-  };
-  function raceIcon(p) {
-    if (!p.race || !p.gender) return "";
-    const base = RACE_FILE_NAMES[p.race] || p.race.toLowerCase().replace(/['\s-]/g, "");
-    const file = `${base}-${p.gender.toLowerCase()}.png`;
-    // If an icon file is missing, hide it instead of showing a broken image
-    return `<img class="class-icon" src="${RACE_FOLDER}${file}" alt="${p.race}" onerror="this.remove()">`;
-  }
-
   // Each character's page on Blizzard's Armory site
   const ARMORY_REGION = "us";       // "eu" for EU realms
   const ARMORY_LOCALE = "en-us";    // "en-gb" for EU
