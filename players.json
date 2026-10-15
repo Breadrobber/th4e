@@ -6,41 +6,41 @@
   "categories": [
     {
       "key": "itemLevel",
-      "label": "Item level",
+      "label": "Item Level",
       "order": "desc",
       "group": "Character"
     },
     {
       "key": "quests",
-      "label": "Quests completed",
+      "label": "Quests Completed",
       "order": "desc",
       "group": "Character",
       "stat": "Quests completed"
     },
     {
       "key": "flightPath",
-      "label": "Flight paths taken",
+      "label": "Flight Paths Taken",
       "order": "desc",
       "group": "Character",
       "stat": "Flight paths taken"
     },
     {
       "key": "hearths",
-      "label": "Times hearthed",
+      "label": "Times Hearthed",
       "order": "desc",
       "group": "Character",
       "stat": "Number of times hearthed"
     },
     {
       "key": "fishCaught",
-      "label": "Fish caught",
+      "label": "Fish Caught",
       "order": "desc",
       "group": "Character",
       "stat": "Fish caught"
     },
     {
       "key": "deaths",
-      "label": "Fewest deaths",
+      "label": "Fewest Deaths",
       "order": "asc",
       "group": "Deaths",
       "stat": "Total deaths",
@@ -48,21 +48,21 @@
     },
     {
       "key": "falling",
-      "label": "Falling deaths",
+      "label": "Falling Deaths",
       "order": "desc",
       "group": "Deaths",
       "stat": "Deaths from falling"
     },
     {
       "key": "bgWins",
-      "label": "Battleground wins",
+      "label": "Battleground Wins",
       "order": "desc",
       "group": "Combat",
       "stat": "Battlegrounds won"
     },
     {
       "key": "duelsWon",
-      "label": "Duels won",
+      "label": "Duels Won",
       "order": "desc",
       "group": "Combat",
       "stat": "Duels won"
@@ -76,35 +76,35 @@
     },
     {
       "key": "cheers",
-      "label": "Total cheers",
+      "label": "Total Cheers",
       "order": "desc",
       "group": "Social",
       "stat": "Total cheers"
     },
     {
       "key": "elixirs",
-      "label": "Elixirs consumed",
+      "label": "Elixirs Consumed",
       "order": "desc",
       "group": "Consumables",
       "stat": "Elixirs consumed"
     },
     {
       "key": "beverages",
-      "label": "Beverages consumed",
+      "label": "Beverages Consumed",
       "order": "desc",
       "group": "Consumables",
       "stat": "Beverages consumed"
     },
     {
       "key": "foodEaten",
-      "label": "Food eaten",
+      "label": "Food Eaten",
       "order": "desc",
       "group": "Consumables",
       "stat": "Food eaten"
     },
     {
       "key": "healthstones",
-      "label": "Healthstones used",
+      "label": "Healthstones Used",
       "order": "desc",
       "group": "Consumables",
       "stat": "Healthstones used"
@@ -113,21 +113,21 @@
   "pvpCategories": [
     {
       "key": "honorKills",
-      "label": "Honorable kills",
+      "label": "Honorable Kills",
       "order": "desc",
       "group": "Honor",
       "stat": "Total Honorable Kills"
     },
     {
       "key": "pvpDeaths",
-      "label": "PvP deaths",
+      "label": "PvP Deaths",
       "order": "desc",
       "group": "Honor",
       "stat": "Total deaths from opposite faction"
     },
     {
       "key": "winRate",
-      "label": "Win rate",
+      "label": "Win Rate",
       "order": "desc",
       "group": "Honor",
       "column": "Win %"
