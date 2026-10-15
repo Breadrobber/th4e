@@ -363,6 +363,58 @@ const CLASS_COLORS = {
     });
   }
 
+  // ----- Professions: who can craft what -----
+  // Gathering professions are listed separately from crafting ones.
+  const GATHERING = ["Mining", "Herbalism", "Skinning"];
+
+  function showProfessions() {
+    const list = document.getElementById("prof-list");
+    if (!list) return;
+
+    const byProf = {};
+    data.players.forEach(p => {
+      (p.professions || []).forEach(pr => {
+        (byProf[pr.name] ||= []).push({ player: p, skill: pr.skill, spec: pr.specialization });
+      });
+    });
+
+    const names = Object.keys(byProf).sort((a, b) => {
+      const ga = GATHERING.includes(a), gb = GATHERING.includes(b);
+      if (ga !== gb) return ga ? 1 : -1;      // crafting first, gathering after
+      return a.localeCompare(b);
+    });
+
+    list.innerHTML = "";
+    if (!names.length) {
+      list.innerHTML = '<p class="no-match">No professions recorded yet.</p>';
+      return;
+    }
+
+    names.forEach(name => {
+      const members = byProf[name].sort((a, b) => (b.skill ?? 0) - (a.skill ?? 0));
+      const box = document.createElement("div");
+      box.className = "class-group prof-group";
+      box.innerHTML = `<h3 class="prof-head"><span class="prof-name"></span><span class="count"></span></h3><ul></ul>`;
+      box.querySelector(".prof-name").textContent = name;
+      box.querySelector(".count").textContent = members.length;
+      const ul = box.querySelector("ul");
+      members.forEach(m => {
+        const li = document.createElement("li");
+        const nameSpan = document.createElement("span");
+        nameSpan.className = "roster-name";
+        nameSpan.textContent = m.player.name;
+        nameSpan.style.color = CLASS_COLORS[m.player.class] || "inherit";
+        li.appendChild(nameSpan);
+        const skill = document.createElement("span");
+        skill.textContent = m.skill ?? "—";
+        skill.title = m.spec ? m.spec : "";
+        li.appendChild(skill);
+        ul.appendChild(li);
+      });
+      list.appendChild(box);
+    });
+  }
+
   // ----- Composition bar charts -----
   const BREAKDOWNS = [
     { key: "class",  label: "Class",  value: p => p.class, color: v => CLASS_COLORS[v] || "var(--bronze)" },
@@ -425,6 +477,7 @@ const CLASS_COLORS = {
       if (stamp) stamp.textContent = `Last updated ${data.updated}`;
       buildCategories();
       showRoster();
+      showProfessions();
       showSnapshot();
       showStatOfDay();
       showLeadChanges();
