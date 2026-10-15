@@ -99,7 +99,6 @@
   .class-group li a:hover { border-bottom-style: solid; }
 
   main { width: min(92%, 760px); margin: 2.5rem auto 4rem; }
-  body:has(.board-layout) main { width: min(94%, 960px); }
 
   .notice {
     border: 1px solid #4a3a2c;
@@ -130,7 +129,7 @@
   .no-match { color: var(--ash); font-size: 1rem; }
 
   /* Leaderboard: categories down the side */
-  .board-layout { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  .board-layout { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start; }
   .board-main { min-width: 0; }   /* lets the table scroll instead of stretching the page */
   .cat-list { position: sticky; top: 4.5rem; }
   .cat-group { margin-bottom: 0.3rem; }
