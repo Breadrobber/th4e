@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body data-board="pvp">
   <header class="image-banner">
     <h1><a href="index.html"><img src="images/banner.png" alt="Totem Huggers"></a></h1>
   </header>
@@ -31,16 +31,21 @@
     </div>
 
     <section id="pvp">
-      <h2>PvP</h2>
-      <input type="search" id="pvp-search" class="search" placeholder="Search players…" aria-label="Search PvP players by name">
-      <div class="table-wrap">
-        <table>
-          <thead><tr id="pvp-head"><th>Rank</th><th class="class-col">Race</th><th class="class-col">Class</th><th class="level-col">Level</th><th>Player</th></tr></thead>
-          <tbody id="pvp-rows"></tbody>
-          <tfoot id="pvp-no-match" hidden><tr><td colspan="8" class="no-match">No players match that name.</td></tr></tfoot>
-        </table>
+      <div class="board-layout">
+        <nav class="cat-list" id="cat-list" aria-label="PvP categories"></nav>
+
+        <div class="board-main">
+          <input type="search" id="board-search" class="search" placeholder="Search players…" aria-label="Search PvP players by name">
+          <h2 id="board-title">Loading…</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Rank</th><th>Player</th><th id="value-heading"></th></tr></thead>
+              <tbody id="rows"></tbody>
+              <tfoot id="rows-no-match" hidden><tr><td colspan="3" class="no-match">No players match that name.</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
       </div>
-      <p class="meta">Click a column heading to rank by it.</p>
     </section>
 
   </main>
