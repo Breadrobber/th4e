@@ -132,15 +132,6 @@
   .board-layout { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start; }
   .board-main { min-width: 0; max-width: 32rem; }
 
-  /* On wide screens, move the categories out into the left margin
-     so the table sits at the same width as the other pages */
-  @media (min-width: 1200px) {
-    .board-layout {
-      grid-template-columns: 10rem minmax(0, 1fr);
-      gap: 2rem;
-      margin-left: -12rem;
-    }
-  }
 
   .cat-list { position: sticky; top: 4.5rem; }
   .cat-group { margin-bottom: 0.3rem; }
