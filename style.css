@@ -130,7 +130,7 @@
 
   /* Leaderboard: categories down the side */
   .board-layout { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start; }
-  .board-main { min-width: 0; }   /* lets the table scroll instead of stretching the page */
+  .board-main { min-width: 0; max-width: 32rem; }
 
   /* On wide screens, move the categories out into the left margin
      so the table sits at the same width as the other pages */
