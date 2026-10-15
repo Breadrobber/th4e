@@ -12,6 +12,7 @@ const GUILD = "";          // your Forever guild, if you have one yet
 // Namespaces worth trying. Blizzard names these per game version.
 const NAMESPACES = [
   "profile-us",
+  "profile-classic-beta",
   "profile-classic-us",
   "profile-classic1x-us",
   "profile-forever-us",
