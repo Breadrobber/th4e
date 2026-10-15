@@ -31,16 +31,21 @@
     </div>
 
     <section id="leaderboard">
-    <div class="tabs" id="tabs" role="group" aria-label="Choose a leaderboard"></div>
-    <input type="search" id="board-search" class="search" placeholder="Search players…" aria-label="Search leaderboard players by name">
-    <h2 id="board-title">Loading…</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Rank</th><th class="class-col">Race</th><th class="class-col">Class</th><th class="level-col">Level</th><th>Player</th><th id="value-heading"></th></tr></thead>
-        <tbody id="rows"></tbody>
-        <tfoot id="rows-no-match" hidden><tr><td colspan="6" class="no-match">No players match that name.</td></tr></tfoot>
-      </table>
-    </div>
+      <div class="board-layout">
+        <nav class="cat-list" id="cat-list" aria-label="Leaderboard categories"></nav>
+
+        <div class="board-main">
+          <input type="search" id="board-search" class="search" placeholder="Search players…" aria-label="Search leaderboard players by name">
+          <h2 id="board-title">Loading…</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Rank</th><th class="class-col">Race</th><th class="class-col">Class</th><th class="level-col">Level</th><th>Player</th><th id="value-heading"></th></tr></thead>
+              <tbody id="rows"></tbody>
+              <tfoot id="rows-no-match" hidden><tr><td colspan="6" class="no-match">No players match that name.</td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>
