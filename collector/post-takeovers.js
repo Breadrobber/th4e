@@ -7,7 +7,7 @@ const path = require("path");
 
 // ---------- Settings ----------
 const SITE_URL = "https://breadrobber.github.io/totem-huggers-guild-website/";   // your site's address
-const SKIP_KEYS = ["itemLevel"];   // boards not worth announcing
+const SKIP_KEYS = [];   // extra boards to leave out
 // ------------------------------
 
 const WEBHOOK = process.env.DISCORD_WEBHOOK;
