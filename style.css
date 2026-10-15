@@ -43,7 +43,6 @@
     padding: 0;
     width: min(92%, 760px);
     display: flex;
-    justify-content: center;
     gap: 2rem;
   }
   .menu a {
@@ -99,6 +98,7 @@
   .class-group li a:hover { border-bottom-style: solid; }
 
   main { width: min(92%, 760px); margin: 2.5rem auto 4rem; }
+  body:has(.board-layout) main { width: min(94%, 960px); }
 
   .notice {
     border: 1px solid #4a3a2c;
@@ -129,10 +129,8 @@
   .no-match { color: var(--ash); font-size: 1rem; }
 
   /* Leaderboard: categories down the side */
-  .board-layout { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start; }
-  .board-main { min-width: 0; max-width: 32rem; }
-
-
+  .board-layout { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  .board-main { min-width: 0; }   /* lets the table scroll instead of stretching the page */
   .cat-list { position: sticky; top: 4.5rem; }
   .cat-group { margin-bottom: 0.3rem; }
   .cat-btn, .stat-btn {
@@ -232,6 +230,16 @@
   a.player:hover { border-bottom-style: solid; }
   .ext { font-size: 0.8em; color: var(--ash); margin-left: 0.3rem; }
   .meta { display: block; font-size: 0.9rem; color: var(--ash); font-weight: 400; }
+
+  /* Professions */
+  .prof-group { border-top-color: var(--bronze); }
+  .prof-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.9rem 1rem 0.5rem;
+    color: var(--bronze);
+  }
+  .prof-head .count { color: var(--ash); font-weight: 400; }
 
   /* Composition bar charts */
   .chart-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
