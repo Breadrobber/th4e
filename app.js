@@ -97,12 +97,11 @@ const CLASS_COLORS = {
       if (rank <= 3) tr.className = "top r" + rank;
       tr.innerHTML = `
         <td><span class="rank">${rank}</span></td>
-        <td class="class-col">${raceIcon(p)}</td>
-        <td class="class-col">${CLASS_ICONS[p.class] ? `<img class="class-icon" src="${ICON_FOLDER}${CLASS_ICONS[p.class]}" alt="${p.class}">` : ""}</td>
-        <td class="level-col">${p.stats.level ?? ""}</td>
         <td><div class="player-cell">${avatarImg(p)}<span><span class="player"></span><span class="meta"></span></span></div></td>
         <td>${category.key === "winRate" ? value.toFixed(1) + "%" : value.toLocaleString()}</td>`;
-      const name = armoryLink(p, tr.querySelector(".player"));
+      // Plain name on this board — the other pages still link to the Armory
+      const name = tr.querySelector(".player");
+      name.textContent = p.name;
       name.style.color = CLASS_COLORS[p.class] || "inherit";
       tr.querySelector(".meta").textContent = `${p.race} ${p.class}`;
       rows.appendChild(tr);
