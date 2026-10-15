@@ -129,6 +129,7 @@
 
   /* Leaderboard: categories down the side */
   .board-layout { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; align-items: start; }
+  .board-main { min-width: 0; }
   .cat-list { position: sticky; top: 4.5rem; }
   .cat-group { margin-bottom: 0.3rem; }
   .cat-btn, .stat-btn {
