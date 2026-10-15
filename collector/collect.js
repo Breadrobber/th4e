@@ -32,33 +32,33 @@ const OUTPUT = path.join(__dirname, "..", "players.json");
 
 const CATEGORIES = [
   //{ key: "achievementPoints", label: "Achievement points", order: "desc", group: "Character" },
-  { key: "itemLevel",    label: "Item level",         order: "desc", group: "Character" },
-  { key: "quests",       label: "Quests completed",   order: "desc", group: "Character",    stat: "Quests completed" },
-  { key: "flightPath",   label: "Flight paths taken", order: "desc", group: "Character",    stat: "Flight paths taken" },
-  { key: "hearths",      label: "Times hearthed",     order: "desc", group: "Character",    stat: "Number of times hearthed" },
-  { key: "fishCaught",   label: "Fish caught",        order: "desc", group: "Character",    stat: "Fish caught" },
+  { key: "itemLevel",    label: "Item Level",         order: "desc", group: "Character" },
+  { key: "quests",       label: "Quests Completed",   order: "desc", group: "Character",    stat: "Quests completed" },
+  { key: "flightPath",   label: "Flight Paths Taken", order: "desc", group: "Character",    stat: "Flight paths taken" },
+  { key: "hearths",      label: "Times Hearthed",     order: "desc", group: "Character",    stat: "Number of times hearthed" },
+  { key: "fishCaught",   label: "Fish Caught",        order: "desc", group: "Character",    stat: "Fish caught" },
 
-  { key: "deaths",       label: "Fewest deaths",      order: "asc",  group: "Deaths",       stat: "Total deaths", column: "Deaths" },
-  { key: "falling",      label: "Falling deaths",     order: "desc", group: "Deaths",       stat: "Deaths from falling" },
+  { key: "deaths",       label: "Fewest Deaths",      order: "asc",  group: "Deaths",       stat: "Total deaths", column: "Deaths" },
+  { key: "falling",      label: "Falling Deaths",     order: "desc", group: "Deaths",       stat: "Deaths from falling" },
 
-  { key: "bgWins",       label: "Battleground wins",  order: "desc", group: "Combat",       stat: "Battlegrounds won" },
-  { key: "duelsWon",     label: "Duels won",          order: "desc", group: "Combat",       stat: "Duels won" },
+  { key: "bgWins",       label: "Battleground Wins",  order: "desc", group: "Combat",       stat: "Battlegrounds won" },
+  { key: "duelsWon",     label: "Duels Won",          order: "desc", group: "Combat",       stat: "Duels won" },
 
   { key: "lold",         label: "Times LOL'd",        order: "desc", group: "Social",       stat: "Total times LOL'd" },
-  { key: "cheers",       label: "Total cheers",       order: "desc", group: "Social",       stat: "Total cheers" },
+  { key: "cheers",       label: "Total Cheers",       order: "desc", group: "Social",       stat: "Total cheers" },
 
-  { key: "elixirs",      label: "Elixirs consumed",   order: "desc", group: "Consumables",  stat: "Elixirs consumed" },
-  { key: "beverages",    label: "Beverages consumed", order: "desc", group: "Consumables",  stat: "Beverages consumed" },
-  { key: "foodEaten",    label: "Food eaten",         order: "desc", group: "Consumables",  stat: "Food eaten" },
-  { key: "healthstones", label: "Healthstones used",  order: "desc", group: "Consumables",  stat: "Healthstones used" },
+  { key: "elixirs",      label: "Elixirs Consumed",   order: "desc", group: "Consumables",  stat: "Elixirs consumed" },
+  { key: "beverages",    label: "Beverages Consumed", order: "desc", group: "Consumables",  stat: "Beverages consumed" },
+  { key: "foodEaten",    label: "Food Eaten",         order: "desc", group: "Consumables",  stat: "Food eaten" },
+  { key: "healthstones", label: "Healthstones Used",  order: "desc", group: "Consumables",  stat: "Healthstones used" },
 ];
 
 // ---------- PvP leaderboard tabs (the PvP page) ----------
 // Same settings as above. "winRate" is worked out below, not read from a stat.
 const PVP_CATEGORIES = [
-  { key: "honorKills", label: "Honorable kills", order: "desc", group: "Honor", stat: "Total Honorable Kills" },
-  { key: "pvpDeaths",  label: "PvP deaths",      order: "desc", group: "Honor", stat: "Total deaths from opposite faction" },
-  { key: "winRate",    label: "Win rate",        order: "desc", group: "Honor", column: "Win %" },
+  { key: "honorKills", label: "Honorable Kills", order: "desc", group: "Honor", stat: "Total Honorable Kills" },
+  { key: "pvpDeaths",  label: "PvP Deaths",      order: "desc", group: "Honor", stat: "Total deaths from opposite faction" },
+  { key: "winRate",    label: "Win Rate",        order: "desc", group: "Honor", column: "Win %" },
 ];
 const ALL_CATEGORIES = [...CATEGORIES, ...PVP_CATEGORIES];
 // ----------------------------------------
