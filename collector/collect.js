@@ -24,28 +24,33 @@ const OUTPUT = path.join(__dirname, "..", "players.json");
 // Each line is one tab on the site, in this order.
 //   key:    a short unique id, letters only, no spaces
 //   label:  the tab's name on the site
+//   group:  which category it appears under on the leaderboard page
 //   column: (optional) the column heading, if it should differ from the label
 //   order:  "desc" = highest wins, "asc" = lowest wins
 //   stat:   the statistic's name EXACTLY as it appears in stats-list.txt
 // The first three tabs come from other parts of the API, so they have no "stat".
 
 const CATEGORIES = [
-  //{ key: "achievementPoints", label: "Achievement points", order: "desc" },
-  { key: "itemLevel",         label: "Item level",         order: "desc" },
-  { key: "quests",            label: "Quests completed",   order: "desc", stat: "Quests completed" },
-  { key: "lold",              label: "Times LOL'd",        order: "desc", stat: "Total times LOL'd" },
-  { key: "cheers",            label: "Total cheers",       order: "desc", stat: "Total cheers" },
-  { key: "bgWins",            label: "Battleground wins",  order: "desc", stat: "Battlegrounds won" },
-  { key: "falling",           label: "Falling deaths",     order: "desc", stat: "Deaths from falling" },
-  { key: "flightPath",        label: "Flight Paths taken", order: "desc", stat: "Flight paths taken" },
-  { key: "deaths",            label: "Fewest deaths",      order: "asc",  stat: "Total deaths", column: "Deaths" },
-  { key: "elixirs",           label: "Elixirs consumed",   order: "desc", stat: "Elixirs consumed" },
-  { key: "beverages",         label: "Beverages consumed", order: "desc", stat: "Beverages consumed" },
-  { key: "foodEaten",         label: "Food eaten",         order: "desc", stat: "Food eaten" },
-  { key: "healthstones",      label: "Healthstones used",  order: "desc", stat: "Healthstones used" },
-  { key: "fishCaught",        label: "Fish caught",        order: "desc", stat: "Fish caught" },
-  { key: "hearths",           label: "Times hearthed",     order: "desc", stat: "Number of times hearthed" },
-  { key: "duelsWon",          label: "Duels won",          order: "desc", stat: "Duels won" },
+  //{ key: "achievementPoints", label: "Achievement points", order: "desc", group: "Character" },
+  { key: "itemLevel",    label: "Item level",         order: "desc", group: "Character" },
+  { key: "quests",       label: "Quests completed",   order: "desc", group: "Character",    stat: "Quests completed" },
+  { key: "flightPath",   label: "Flight paths taken", order: "desc", group: "Character",    stat: "Flight paths taken" },
+  { key: "hearths",      label: "Times hearthed",     order: "desc", group: "Character",    stat: "Number of times hearthed" },
+  { key: "fishCaught",   label: "Fish caught",        order: "desc", group: "Character",    stat: "Fish caught" },
+
+  { key: "deaths",       label: "Fewest deaths",      order: "asc",  group: "Deaths",       stat: "Total deaths", column: "Deaths" },
+  { key: "falling",      label: "Falling deaths",     order: "desc", group: "Deaths",       stat: "Deaths from falling" },
+
+  { key: "bgWins",       label: "Battleground wins",  order: "desc", group: "Combat",       stat: "Battlegrounds won" },
+  { key: "duelsWon",     label: "Duels won",          order: "desc", group: "Combat",       stat: "Duels won" },
+
+  { key: "lold",         label: "Times LOL'd",        order: "desc", group: "Social",       stat: "Total times LOL'd" },
+  { key: "cheers",       label: "Total cheers",       order: "desc", group: "Social",       stat: "Total cheers" },
+
+  { key: "elixirs",      label: "Elixirs consumed",   order: "desc", group: "Consumables",  stat: "Elixirs consumed" },
+  { key: "beverages",    label: "Beverages consumed", order: "desc", group: "Consumables",  stat: "Beverages consumed" },
+  { key: "foodEaten",    label: "Food eaten",         order: "desc", group: "Consumables",  stat: "Food eaten" },
+  { key: "healthstones", label: "Healthstones used",  order: "desc", group: "Consumables",  stat: "Healthstones used" },
 ];
 
 // ---------- PvP leaderboard tabs (the PvP page) ----------
