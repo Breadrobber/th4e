@@ -69,8 +69,8 @@ const CLASS_COLORS = {
   function showBoard(category) {
     if (!document.getElementById("rows")) return;
     currentCategory = category;
-    document.querySelectorAll("#tabs button").forEach(b => {
-      b.setAttribute("aria-pressed", b.dataset.key === category.key ? "true" : "false");
+    document.querySelectorAll("#cat-list .stat-btn").forEach(b => {
+      b.setAttribute("aria-current", b.dataset.key === category.key ? "true" : "false");
     });
     document.getElementById("board-title").textContent = category.label;
     document.getElementById("value-heading").textContent = category.column || category.label;
@@ -108,6 +108,61 @@ const CLASS_COLORS = {
       rows.appendChild(tr);
     });
     document.getElementById("rows-no-match").hidden = shown > 0;
+  }
+
+  // ----- Leaderboard categories down the side -----
+  const groupOf = cat => cat.group || "Other";
+  let openGroup = null;
+  let groups = [];
+
+  function drawCategories() {
+    const list = document.getElementById("cat-list");
+    list.innerHTML = "";
+    groups.forEach(g => {
+      const open = g.name === openGroup;
+      const wrap = document.createElement("div");
+      wrap.className = "cat-group";
+
+      const head = document.createElement("button");
+      head.className = "cat-btn";
+      head.textContent = g.name;
+      head.setAttribute("aria-expanded", String(open));
+      head.addEventListener("click", () => {
+        openGroup = open ? null : g.name;   // clicking the open one closes it
+        drawCategories();
+      });
+      wrap.appendChild(head);
+
+      if (open) {
+        g.stats.forEach(cat => {
+          const btn = document.createElement("button");
+          btn.className = "stat-btn";
+          btn.textContent = cat.label;
+          btn.dataset.key = cat.key;
+          btn.setAttribute("aria-current", cat.key === currentCategory?.key ? "true" : "false");
+          btn.addEventListener("click", () => showBoard(cat));
+          wrap.appendChild(btn);
+        });
+      }
+      list.appendChild(wrap);
+    });
+  }
+
+  function buildCategories() {
+    const list = document.getElementById("cat-list");
+    if (!list) return;
+
+    groups = [];
+    (data.categories || []).forEach(cat => {
+      let g = groups.find(x => x.name === groupOf(cat));
+      if (!g) groups.push(g = { name: groupOf(cat), stats: [] });
+      g.stats.push(cat);
+    });
+    if (!groups.length) return;
+
+    openGroup = groups[0].name;
+    showBoard(groups[0].stats[0]);   // sets currentCategory
+    drawCategories();
   }
 
   function showRoster() {
@@ -433,15 +488,7 @@ const CLASS_COLORS = {
       if (notice) notice.hidden = !data.sampleData;
       const stamp = document.getElementById("updated");
       if (stamp) stamp.textContent = `Last updated ${data.updated}`;
-      const tabs = document.getElementById("tabs");
-      if (tabs) data.categories.forEach(cat => {
-        const btn = document.createElement("button");
-        btn.textContent = cat.label;
-        btn.dataset.key = cat.key;
-        btn.addEventListener("click", () => showBoard(cat));
-        tabs.appendChild(btn);
-      });
-      if (tabs) showBoard(data.categories[0]);
+      buildCategories();
       showRoster();
       buildPvp();
       showSnapshot();
