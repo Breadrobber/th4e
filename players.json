@@ -115,18 +115,21 @@
       "key": "honorKills",
       "label": "Honorable kills",
       "order": "desc",
+      "group": "Honor",
       "stat": "Total Honorable Kills"
     },
     {
       "key": "pvpDeaths",
       "label": "PvP deaths",
       "order": "desc",
+      "group": "Honor",
       "stat": "Total deaths from opposite faction"
     },
     {
       "key": "winRate",
       "label": "Win rate",
       "order": "desc",
+      "group": "Honor",
       "column": "Win %"
     }
   ],
