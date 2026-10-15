@@ -56,9 +56,9 @@ const CATEGORIES = [
 // ---------- PvP leaderboard tabs (the PvP page) ----------
 // Same settings as above. "winRate" is worked out below, not read from a stat.
 const PVP_CATEGORIES = [
-  { key: "honorKills", label: "Honorable kills", order: "desc", stat: "Total Honorable Kills" },
-  { key: "pvpDeaths",  label: "PvP deaths",      order: "desc", stat: "Total deaths from opposite faction" },
-  { key: "winRate",    label: "Win rate",        order: "desc", column: "Win %" },
+  { key: "honorKills", label: "Honorable kills", order: "desc", group: "Honor", stat: "Total Honorable Kills" },
+  { key: "pvpDeaths",  label: "PvP deaths",      order: "desc", group: "Honor", stat: "Total deaths from opposite faction" },
+  { key: "winRate",    label: "Win rate",        order: "desc", group: "Honor", column: "Win %" },
 ];
 const ALL_CATEGORIES = [...CATEGORIES, ...PVP_CATEGORIES];
 // ----------------------------------------
