@@ -120,6 +120,7 @@ async function collectMember(token, member) {
 
   const player = {
     name: profile.name,
+    rank: member.rank,  
     class: profile.character_class?.name ?? "Unknown",
     race: profile.race?.name ?? "",
     gender: profile.gender?.type ?? "",
