@@ -100,6 +100,8 @@
   .class-group li a:hover { border-bottom-style: solid; }
 
   main { width: min(92%, 760px); margin: 2.5rem auto 4rem; }
+  /* The board pages need room for the sidebar beside a 760px table */
+  body:has(.board-layout) main { width: min(96%, 58rem); }
 
   .notice {
     border: 1px solid #4a3a2c;
@@ -130,7 +132,18 @@
   .no-match { color: var(--ash); font-size: 1rem; }
 
   /* Leaderboard: categories down the side */
-  .board-layout { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; align-items: start; }
+  .board-layout {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 760px);
+    gap: 1rem;
+    align-items: start;
+    justify-content: center;
+  }
+  /* Shift the pair left by half the sidebar + gap so the table itself,
+     not the pair, sits where the other pages' content sits */
+  @media (min-width: 1000px) {
+    .board-layout { margin-left: -5.25rem; }
+  }
   .board-main { min-width: 0; }   /* lets the table scroll instead of stretching the page */
   .cat-list { position: sticky; top: 4.5rem; }
   .cat-group { margin-bottom: 0.3rem; }
@@ -166,7 +179,12 @@
 
   /* Narrow screens: the categories sit above the table, full width */
   @media (max-width: 700px) {
-    .board-layout { grid-template-columns: 1fr; gap: 1rem; }
+    .board-layout {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-left: 0;
+      justify-content: stretch;
+    }
     .cat-list { position: static; }
     .cat-btn { font-size: 1.05rem; padding: 0.6rem 0.7rem; }
     .stat-btn { font-size: 1rem; padding: 0.45rem 0.7rem 0.45rem 1.4rem; }
