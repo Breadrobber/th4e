@@ -137,197 +137,94 @@ const CLASS_COLORS = {
     drawCategories();
   }
 
+  // ----- Roster: one compact row per member -----
+  // Your guild's rank names, Guild Master first. Blizzard only sends the
+  // number, so anything not listed here shows as "Rank 3" and so on.
+  const RANK_NAMES = [];
+
+  const rankName = n =>
+    typeof n !== "number" ? "" : (RANK_NAMES[n] || (n === 0 ? "Guild Master" : `Rank ${n}`));
+
+  const ROSTER_COLUMNS = [
+    { key: "name",  label: "Name",  align: "left",  value: p => p.name },
+    { key: "race",  label: "Race",  align: "left",  value: p => p.race },
+    { key: "class", label: "Class", align: "left",  value: p => p.class },
+    { key: "rank",  label: "Rank",  align: "left",  value: p => p.rank },
+    { key: "level", label: "Lvl",   align: "right", value: p => p.stats.level },
+  ];
+
+  let rosterSort = { key: "rank", dir: 1 };   // Guild Master at the top
+
   function showRoster() {
-    if (!document.getElementById("roster-list")) return;
+    const head = document.getElementById("roster-head");
+    const body = document.getElementById("roster-rows");
+    if (!head || !body) return;
+
+    // Headings, built once
+    if (!head.children.length) {
+      ROSTER_COLUMNS.forEach(col => {
+        const th = document.createElement("th");
+        th.className = "rt-" + col.align;
+        const btn = document.createElement("button");
+        btn.className = "sort-head";
+        btn.textContent = col.label;
+        btn.addEventListener("click", () => {
+          // Clicking the sorted column again reverses it
+          rosterSort = rosterSort.key === col.key
+            ? { key: col.key, dir: -rosterSort.dir }
+            : { key: col.key, dir: 1 };
+          showRoster();
+        });
+        th.appendChild(btn);
+        head.appendChild(th);
+      });
+    }
+
+    const col = ROSTER_COLUMNS.find(c => c.key === rosterSort.key) || ROSTER_COLUMNS[0];
+    head.querySelectorAll(".sort-head").forEach((b, i) => {
+      const on = ROSTER_COLUMNS[i].key === rosterSort.key;
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      b.dataset.dir = on ? (rosterSort.dir === 1 ? "asc" : "desc") : "";
+    });
+
     const search = document.getElementById("roster-search").value.trim().toLowerCase();
     const matches = search
       ? data.players.filter(p => p.name.toLowerCase().includes(search))
-      : data.players;
-    const byClass = {};
-    matches.forEach(p => (byClass[p.class] ||= []).push(p));
+      : [...data.players];
+
+    matches.sort((a, b) => {
+      const av = col.value(a), bv = col.value(b);
+      let cmp;
+      if (typeof av === "number" && typeof bv === "number") cmp = av - bv;
+      else cmp = String(av ?? "").localeCompare(String(bv ?? ""));
+      // Ties fall back to name, so each rank reads alphabetically
+      if (cmp === 0 && col.key !== "name") return a.name.localeCompare(b.name);
+      return cmp * rosterSort.dir;
+    });
+
     document.getElementById("roster-count").textContent = search
       ? `${matches.length} of ${data.players.length} members`
       : `${data.players.length} members`;
     document.getElementById("roster-no-match").hidden = matches.length > 0;
-    const list = document.getElementById("roster-list");
-    list.innerHTML = "";
-    Object.keys(byClass).sort().forEach(cls => {
-      const members = byClass[cls].sort((a, b) => b.stats.level - a.stats.level);
-      const box = document.createElement("div");
-      box.className = "class-group";
-      box.style.borderTopColor = CLASS_COLORS[cls] || "var(--bronze)";
-      const listId = "roster-" + cls.replace(/\s+/g, "-").toLowerCase();
-      const startOpen = search.length > 0;
-      box.innerHTML = `
-        <h3><button class="class-toggle" aria-expanded="${startOpen}" aria-controls="${listId}">
-          <span class="arrow" aria-hidden="true">▶</span>
-          <span class="name"></span>
-          <span class="count"></span>
-        </button></h3>
-        <ul id="${listId}" ${startOpen ? "" : "hidden"}></ul>`;
-      const toggle = box.querySelector(".class-toggle");
-      toggle.style.color = CLASS_COLORS[cls] || "inherit";
-      toggle.querySelector(".name").textContent = cls;
-      toggle.querySelector(".count").textContent = members.length;
-      // Click the header to open or close the list of names
-      toggle.addEventListener("click", () => {
-        const open = toggle.getAttribute("aria-expanded") === "true";
-        toggle.setAttribute("aria-expanded", String(!open));
-        box.querySelector("ul").hidden = open;
-      });
-      members.forEach(p => {
-        const li = document.createElement("li");
-        const nameSpan = document.createElement("span");
-        li.appendChild(nameSpan);
-        armoryLink(p, nameSpan, "roster-name").style.color = CLASS_COLORS[p.class] || "inherit";
-        const lvl = document.createElement("span");
-        lvl.textContent = `Lv ${p.stats.level}`;
-        li.appendChild(lvl);
-        box.querySelector("ul").appendChild(li);
-      });
-      list.appendChild(box);
-    });
-  }
 
-  // ----- Home page: guild snapshot -----
-  function showSnapshot() {
-    const box = document.getElementById("snapshot");
-    if (!box) return;
-    const levels = data.players.map(p => p.stats.level).filter(l => typeof l === "number");
-    // Max level is read from the roster, so it keeps working when the cap changes
-    const cap = levels.length ? Math.max(...levels) : null;
-    const atCap = cap === null ? 0 : levels.filter(l => l === cap).length;
-    const cards = [
-      { label: "Members", value: data.players.length },
-      { label: cap === null ? "At max level" : `At level ${cap}`, value: atCap },
-    ];
-    box.innerHTML = "";
-    cards.forEach(c => {
-      const el = document.createElement("div");
-      el.className = "stat-card";
-      el.innerHTML = `<span class="stat-label"></span><span class="stat-value">${c.value.toLocaleString()}</span>`;
-      el.querySelector(".stat-label").textContent = c.label;
-      box.appendChild(el);
-    });
-  }
-
-  // ----- Home page: stat of the day -----
-  // One board is featured each day, the same one for everyone, changing at midnight.
-  // To limit which boards can appear, list their keys here, e.g. ["fishCaught", "lold"].
-  const STAT_OF_DAY_KEYS = [];
-
-  function showStatOfDay() {
-    const box = document.getElementById("stat-of-day");
-    if (!box) return;
-    const pool = (data.categories || []).filter(c =>
-      (!STAT_OF_DAY_KEYS.length || STAT_OF_DAY_KEYS.includes(c.key)) &&
-      data.players.some(p => typeof p.stats[c.key] === "number")
-    );
-    if (!pool.length) { box.hidden = true; return; }
-
-    // stat changes at midnight Eastern
-    const eastern = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
-    const day = Math.floor(Date.parse(eastern) / 86400000);
-    const cat = pool[day % pool.length];
-
-    const ranked = data.players
-      .filter(p => typeof p.stats[cat.key] === "number")
-      .sort((a, b) => cat.order === "asc"
-        ? a.stats[cat.key] - b.stats[cat.key]
-        : b.stats[cat.key] - a.stats[cat.key]);
-    const top = ranked[0];
-    if (!top) { box.hidden = true; return; }
-
-    const value = top.stats[cat.key];
-    const fmt = v => cat.key === "winRate" ? v.toFixed(1) + "%" : v.toLocaleString();
-    let margin = "";
-    if (ranked[1]) {
-      const gap = Math.abs(value - ranked[1].stats[cat.key]);
-      margin = gap === 0 ? " · tied for first" : ` · ${fmt(gap)} ahead of second place`;
-    }
-
-    box.hidden = false;
-    box.innerHTML = `
-      <div class="sod-label"></div>
-      <div class="sod-body">
-        ${avatarImg(top)}
-        <span>
-          <span class="sod-line"><span class="player"></span> leads with <span class="sod-value">${fmt(value)}</span></span>
-          <span class="meta"></span>
-        </span>
-      </div>`;
-    box.querySelector(".sod-label").textContent = `Stat of the day · ${cat.label}`;
-    const name = armoryLink(top, box.querySelector(".player"));
-    name.style.color = CLASS_COLORS[top.class] || "inherit";
-    box.querySelector(".meta").textContent = `${top.race} ${top.class}${margin}`;
-  }
-
-  // ----- Home page: recent lead changes -----
-  function showLeadChanges() {
-    const list = document.getElementById("lead-changes");
-    if (!list) return;
-    const all = data.leadChanges || [];
-    list.innerHTML = "";
-    if (!all.length) {
-      list.innerHTML = '<p class="no-match">No leads have changed hands yet.</p>';
-      return;
-    }
-    all.forEach(t => {
-      const fmt = v => t.key === "winRate" ? v.toFixed(1) + "%" : v.toLocaleString();
-      const row = document.createElement("div");
-      row.className = "feed-row lead-row";
-      row.innerHTML = `
-        ${avatarImg(t)}
-        <span>
-          <span class="feed-line"><span class="player"></span> took the lead in <span class="feat"></span></span>
-          <span class="meta"></span>
-        </span>
-        <span class="when">${timeAgo(t.when)}</span>`;
-      const name = armoryLink({ name: t.name, realm: t.realm }, row.querySelector(".player"));
-      name.style.color = CLASS_COLORS[t.class] || "inherit";
-      row.querySelector(".feat").textContent = t.label;
-      row.querySelector(".meta").textContent =
-        `${fmt(t.value)} · passed ${t.previous}`;
-      list.appendChild(row);
-    });
-  }
-
-  // ----- Home page: the guild's newest achievements -----
-  function timeAgo(ms) {
-    const mins = Math.round((Date.now() - ms) / 60000);
-    if (mins < 60) return mins <= 1 ? "just now" : `${mins} minutes ago`;
-    const hours = Math.round(mins / 60);
-    if (hours < 24) return hours === 1 ? "an hour ago" : `${hours} hours ago`;
-    const days = Math.round(hours / 24);
-    if (days === 1) return "yesterday";
-    if (days < 30) return `${days} days ago`;
-    return new Date(ms).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-  }
-
-  function showFeed() {
-    const list = document.getElementById("feed");
-    if (!list) return;
-    const all = data.recent || [];
-    list.innerHTML = "";
-    if (!all.length) {
-      list.innerHTML = '<p class="no-match">No achievements recorded yet.</p>';
-      return;
-    }
-    all.forEach(a => {
-      const row = document.createElement("div");
-      row.className = "feed-row";
-      row.innerHTML = `
-        ${avatarImg(a)}
-        <span>
-          <span class="feed-line"><span class="player"></span> earned <span class="feat"></span></span>
-          <span class="meta"></span>
-        </span>
-        <span class="when">${timeAgo(a.when)}</span>`;
-      const name = armoryLink({ name: a.player, realm: a.realm }, row.querySelector(".player"));
-      name.style.color = CLASS_COLORS[a.class] || "inherit";
-      row.querySelector(".feat").textContent = a.name;
-      row.querySelector(".meta").textContent = `${a.race} ${a.class}`;
-      list.appendChild(row);
+    body.innerHTML = "";
+    matches.forEach(p => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td class="rt-left rt-name"></td>
+        <td class="rt-left rt-race"></td>
+        <td class="rt-left rt-class"></td>
+        <td class="rt-left rt-rank"></td>
+        <td class="rt-right rt-level">${p.stats.level ?? ""}</td>`;
+      const name = tr.querySelector(".rt-name");
+      name.textContent = p.name;
+      name.style.color = CLASS_COLORS[p.class] || "inherit";
+      tr.querySelector(".rt-race").textContent = p.race || "";
+      tr.querySelector(".rt-class").textContent = p.class;
+      const rk = tr.querySelector(".rt-rank");
+      rk.textContent = rankName(p.rank);
+      if (p.rank === 0 || p.rank === 1) rk.classList.add("rt-officer");
+      body.appendChild(tr);
     });
   }
 
