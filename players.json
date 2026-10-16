@@ -325,6 +325,7 @@
   "players": [
     {
       "name": "Nottuesday",
+      "rank": 1,
       "class": "Priest",
       "race": "Human",
       "gender": "FEMALE",
@@ -370,6 +371,7 @@
     },
     {
       "name": "Notmonday",
+      "rank": 1,
       "class": "Druid",
       "race": "Night Elf",
       "gender": "FEMALE",
@@ -415,6 +417,7 @@
     },
     {
       "name": "Shine",
+      "rank": 1,
       "class": "Paladin",
       "race": "Lightforged Draenei",
       "gender": "FEMALE",
@@ -454,6 +457,7 @@
     },
     {
       "name": "Wraith",
+      "rank": 1,
       "class": "Death Knight",
       "race": "Void Elf",
       "gender": "FEMALE",
@@ -493,6 +497,7 @@
     },
     {
       "name": "Karma",
+      "rank": 1,
       "class": "Monk",
       "race": "Void Elf",
       "gender": "FEMALE",
@@ -532,6 +537,7 @@
     },
     {
       "name": "Arc",
+      "rank": 1,
       "class": "Mage",
       "race": "Human",
       "gender": "FEMALE",
@@ -571,6 +577,7 @@
     },
     {
       "name": "Onyx",
+      "rank": 2,
       "class": "Warrior",
       "race": "Dracthyr",
       "gender": "FEMALE",
@@ -610,6 +617,7 @@
     },
     {
       "name": "Rainade",
+      "rank": 1,
       "class": "Hunter",
       "race": "Human",
       "gender": "FEMALE",
@@ -655,6 +663,7 @@
     },
     {
       "name": "Shayne",
+      "rank": 1,
       "class": "Hunter",
       "race": "Void Elf",
       "gender": "FEMALE",
@@ -694,6 +703,7 @@
     },
     {
       "name": "Vesper",
+      "rank": 1,
       "class": "Rogue",
       "race": "Night Elf",
       "gender": "FEMALE",
@@ -739,6 +749,7 @@
     },
     {
       "name": "Notfriday",
+      "rank": 1,
       "class": "Monk",
       "race": "Void Elf",
       "gender": "FEMALE",
@@ -784,6 +795,7 @@
     },
     {
       "name": "Topchief",
+      "rank": 2,
       "class": "Warrior",
       "race": "Dwarf",
       "gender": "MALE",
@@ -816,6 +828,7 @@
     },
     {
       "name": "Notthursday",
+      "rank": 0,
       "class": "Demon Hunter",
       "race": "Night Elf",
       "gender": "FEMALE",
@@ -861,6 +874,7 @@
     },
     {
       "name": "Greatwizardx",
+      "rank": 1,
       "class": "Druid",
       "race": "Night Elf",
       "gender": "FEMALE",
@@ -893,6 +907,7 @@
     },
     {
       "name": "Biglizard",
+      "rank": 1,
       "class": "Evoker",
       "race": "Dracthyr",
       "gender": "FEMALE",
@@ -925,6 +940,7 @@
     },
     {
       "name": "Dimfish",
+      "rank": 1,
       "class": "Paladin",
       "race": "Dark Iron Dwarf",
       "gender": "MALE",
@@ -957,6 +973,7 @@
     },
     {
       "name": "Notcorrupted",
+      "rank": 1,
       "class": "Warlock",
       "race": "Void Elf",
       "gender": "FEMALE",
@@ -989,6 +1006,7 @@
     },
     {
       "name": "Six",
+      "rank": 1,
       "class": "Hunter",
       "race": "Draenei",
       "gender": "FEMALE",
@@ -1034,6 +1052,7 @@
     },
     {
       "name": "Sadfish",
+      "rank": 1,
       "class": "Monk",
       "race": "Dwarf",
       "gender": "MALE",
@@ -1073,6 +1092,7 @@
     },
     {
       "name": "Crackpants",
+      "rank": 1,
       "class": "Warlock",
       "race": "Draenei",
       "gender": "FEMALE",
@@ -1105,6 +1125,7 @@
     },
     {
       "name": "Redheadgf",
+      "rank": 1,
       "class": "Mage",
       "race": "Gnome",
       "gender": "FEMALE",
@@ -1137,6 +1158,7 @@
     },
     {
       "name": "Breadrobber",
+      "rank": 1,
       "class": "Rogue",
       "race": "Night Elf",
       "gender": "FEMALE",
@@ -1176,6 +1198,7 @@
     },
     {
       "name": "Shin",
+      "rank": 2,
       "class": "Shaman",
       "race": "Draenei",
       "gender": "FEMALE",
@@ -1208,6 +1231,7 @@
     },
     {
       "name": "Ophana",
+      "rank": 4,
       "class": "Paladin",
       "race": "Lightforged Draenei",
       "gender": "FEMALE",
@@ -1240,6 +1264,7 @@
     },
     {
       "name": "Notchief",
+      "rank": 1,
       "class": "Hunter",
       "race": "Undead",
       "gender": "FEMALE",
@@ -1272,6 +1297,7 @@
     },
     {
       "name": "Lazyknight",
+      "rank": 1,
       "class": "Death Knight",
       "race": "Dwarf",
       "gender": "MALE",
@@ -1304,6 +1330,7 @@
     },
     {
       "name": "Magnus",
+      "rank": 4,
       "class": "Mage",
       "race": "Blood Elf",
       "gender": "MALE",
@@ -1349,6 +1376,7 @@
     },
     {
       "name": "Betrayedyou",
+      "rank": 4,
       "class": "Hunter",
       "race": "Human",
       "gender": "MALE",
