@@ -241,7 +241,7 @@
   .rt-race, .rt-class { color: var(--ash); }
   .roster-table th:nth-child(2), .roster-table td:nth-child(2),
   .roster-table th:nth-child(3), .roster-table td:nth-child(3),
-  .roster-table th:nth-child(4), .roster-table td:nth-child(4) { width: 8rem; }
+  .roster-table th:nth-child(4), .roster-table td:nth-child(4) { width: 10rem; }
   .roster-table th:last-child, .roster-table td:last-child { width: 4rem; }
   .roster-table th { white-space: nowrap; }
   .rt-rank { color: var(--ash); font-size: 0.85rem; }
