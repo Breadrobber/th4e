@@ -239,11 +239,12 @@
   .roster-table th.rt-right { text-align: right; }
   .rt-name { font-weight: 700; }
   .rt-race, .rt-class { color: var(--ash); }
-  .rt-race { width: 6rem; }
+  .rt-race { width: 9rem; }
   .rt-class { width: 6.5rem; }
   .rt-rank { color: var(--ash); font-size: 0.85rem; width: 7rem; }
   .rt-rank.rt-officer { color: var(--bronze); }
-  .rt-level { width: 3rem; }
+  .rt-level { width: 3.5rem; }
+  .roster-table th { white-space: nowrap; }
   .sort-head {
     font: inherit;
     font-size: inherit;
