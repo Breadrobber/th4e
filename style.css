@@ -69,30 +69,6 @@
   .class-group { background: var(--iron-raised); border-top: 3px solid; border-radius: 3px; }
   .class-group h3 { margin: 0; font-size: 1.15rem; }
 
-  /* The clickable class header with the arrow */
-  .class-toggle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.9rem 1rem;
-    background: none;
-    border: none;
-    font: inherit;
-    font-weight: 700;
-    color: inherit;
-    text-align: left;
-    cursor: pointer;
-  }
-  .class-toggle .count { margin-left: auto; color: var(--ash); font-weight: 400; }
-  .class-toggle .arrow {
-    color: var(--bronze);
-    font-size: 0.8em;
-    transition: transform 0.2s ease;
-  }
-  .class-toggle[aria-expanded="true"] .arrow { transform: rotate(90deg); }
-  @media (prefers-reduced-motion: reduce) { .class-toggle .arrow { transition: none; } }
-
   .class-group ul { list-style: none; margin: 0; padding: 0 1rem 1rem; }
   .class-group li { display: flex; justify-content: space-between; gap: 0.5rem; padding: 0.2rem 0; font-size: 1rem; }
   .class-group li span { color: var(--ash); white-space: nowrap; }
@@ -239,6 +215,50 @@
   a.player:hover { border-bottom-style: solid; }
   .ext { font-size: 0.8em; color: var(--ash); margin-left: 0.3rem; }
   .meta { display: block; font-size: 0.9rem; color: var(--ash); font-weight: 400; }
+
+  /* Roster table: dense, one line per member */
+  .roster-table { border-spacing: 0; }
+  .roster-table th {
+    padding: 0 0.6rem 0.4rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .roster-table td {
+    padding: 0.25rem 0.6rem;
+    background: none;
+    border-radius: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  .roster-table tbody tr:nth-child(odd) td { background: var(--iron-raised); }
+  .roster-table tbody tr td:first-child { border-radius: 2px 0 0 2px; width: auto; }
+  .roster-table tbody tr td:last-child { border-radius: 0 2px 2px 0; }
+  .rt-left { text-align: left; }
+  .rt-right { text-align: right; font-variant-numeric: tabular-nums; }
+  .roster-table th.rt-right { text-align: right; }
+  .rt-name { font-weight: 700; }
+  .rt-race, .rt-class { color: var(--ash); }
+  .rt-race { width: 6rem; }
+  .rt-class { width: 6.5rem; }
+  .rt-rank { color: var(--ash); font-size: 0.85rem; width: 7rem; }
+  .rt-rank.rt-officer { color: var(--bronze); }
+  .rt-level { width: 3rem; }
+  .sort-head {
+    font: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: var(--ash);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .sort-head:hover { color: var(--bronze); }
+  .sort-head[aria-pressed="true"] { color: var(--bronze); }
+  .sort-head[data-dir="asc"]::after { content: " \2191"; }
+  .sort-head[data-dir="desc"]::after { content: " \2193"; }
 
   /* Professions */
   .prof-group { border-top-color: var(--bronze); }
