@@ -239,9 +239,10 @@
   .roster-table th.rt-right { text-align: right; }
   .rt-name { font-weight: 700; }
   .rt-race, .rt-class { color: var(--ash); }
-  /* Name takes the leftover space; the rest share the width evenly */
-  .roster-table th:not(:first-child),
-  .roster-table td:not(:first-child) { width: 7rem; }
+  .roster-table th:nth-child(2), .roster-table td:nth-child(2),
+  .roster-table th:nth-child(3), .roster-table td:nth-child(3),
+  .roster-table th:nth-child(4), .roster-table td:nth-child(4) { width: 10rem; }
+  .roster-table th:last-child, .roster-table td:last-child { width: 4rem; }
   .roster-table th { white-space: nowrap; }
   .rt-rank { color: var(--ash); font-size: 0.85rem; }
   .rt-rank.rt-officer { color: var(--bronze); }
