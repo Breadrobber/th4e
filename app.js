@@ -226,6 +226,147 @@ const CLASS_COLORS = {
     });
   }
 
+  // ----- Home page: guild snapshot -----
+  function showSnapshot() {
+    const box = document.getElementById("snapshot");
+    if (!box) return;
+    const levels = data.players.map(p => p.stats.level).filter(l => typeof l === "number");
+    // Max level is read from the roster, so it keeps working when the cap changes
+    const cap = levels.length ? Math.max(...levels) : null;
+    const atCap = cap === null ? 0 : levels.filter(l => l === cap).length;
+    const cards = [
+      { label: "Members", value: data.players.length },
+      { label: cap === null ? "At max level" : `At level ${cap}`, value: atCap },
+    ];
+    box.innerHTML = "";
+    cards.forEach(c => {
+      const el = document.createElement("div");
+      el.className = "stat-card";
+      el.innerHTML = `<span class="stat-label"></span><span class="stat-value">${c.value.toLocaleString()}</span>`;
+      el.querySelector(".stat-label").textContent = c.label;
+      box.appendChild(el);
+    });
+  }
+
+  // ----- Home page: stat of the day -----
+  // One board is featured each day, the same one for everyone, changing at
+  // midnight Eastern. To limit which boards can appear, list their keys here.
+  const STAT_OF_DAY_KEYS = [];
+
+  function showStatOfDay() {
+    const box = document.getElementById("stat-of-day");
+    if (!box) return;
+    const pool = (data.categories || []).filter(c =>
+      (!STAT_OF_DAY_KEYS.length || STAT_OF_DAY_KEYS.includes(c.key)) &&
+      data.players.some(p => typeof p.stats[c.key] === "number")
+    );
+    if (!pool.length) { box.hidden = true; return; }
+
+    // Count days in New York, so the stat changes at midnight Eastern
+    const eastern = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+    const day = Math.floor(Date.parse(eastern) / 86400000);
+    const cat = pool[day % pool.length];
+
+    const ranked = data.players
+      .filter(p => typeof p.stats[cat.key] === "number")
+      .sort((a, b) => cat.order === "asc"
+        ? a.stats[cat.key] - b.stats[cat.key]
+        : b.stats[cat.key] - a.stats[cat.key]);
+    const top = ranked[0];
+    if (!top) { box.hidden = true; return; }
+
+    const value = top.stats[cat.key];
+    const fmt = v => cat.key === "winRate" ? v.toFixed(1) + "%" : v.toLocaleString();
+    let margin = "";
+    if (ranked[1]) {
+      const gap = Math.abs(value - ranked[1].stats[cat.key]);
+      margin = gap === 0 ? " · tied for first" : ` · ${fmt(gap)} ahead of second place`;
+    }
+
+    box.hidden = false;
+    box.innerHTML = `
+      <div class="sod-label"></div>
+      <div class="sod-body">
+        ${avatarImg(top)}
+        <span>
+          <span class="sod-line"><span class="player"></span> leads with <span class="sod-value">${fmt(value)}</span></span>
+          <span class="meta"></span>
+        </span>
+      </div>`;
+    box.querySelector(".sod-label").textContent = `Stat of the day · ${cat.label}`;
+    const name = armoryLink(top, box.querySelector(".player"));
+    name.style.color = CLASS_COLORS[top.class] || "inherit";
+    box.querySelector(".meta").textContent = `${top.race} ${top.class}${margin}`;
+  }
+
+  // ----- Home page: recent lead changes -----
+  function timeAgo(ms) {
+    const mins = Math.round((Date.now() - ms) / 60000);
+    if (mins < 60) return mins <= 1 ? "just now" : `${mins} minutes ago`;
+    const hours = Math.round(mins / 60);
+    if (hours < 24) return hours === 1 ? "an hour ago" : `${hours} hours ago`;
+    const days = Math.round(hours / 24);
+    if (days === 1) return "yesterday";
+    if (days < 30) return `${days} days ago`;
+    return new Date(ms).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  }
+
+  function showLeadChanges() {
+    const list = document.getElementById("lead-changes");
+    if (!list) return;
+    const all = data.leadChanges || [];
+    list.innerHTML = "";
+    if (!all.length) {
+      list.innerHTML = '<p class="no-match">No leads have changed hands yet.</p>';
+      return;
+    }
+    all.forEach(t => {
+      const fmt = v => t.key === "winRate" ? v.toFixed(1) + "%" : v.toLocaleString();
+      const row = document.createElement("div");
+      row.className = "feed-row lead-row";
+      row.innerHTML = `
+        ${avatarImg(t)}
+        <span>
+          <span class="feed-line"><span class="player"></span> took the lead in <span class="feat"></span></span>
+          <span class="meta"></span>
+        </span>
+        <span class="when">${timeAgo(t.when)}</span>`;
+      const name = armoryLink({ name: t.name, realm: t.realm }, row.querySelector(".player"));
+      name.style.color = CLASS_COLORS[t.class] || "inherit";
+      row.querySelector(".feat").textContent = t.label;
+      row.querySelector(".meta").textContent = `${fmt(t.value)} · passed ${t.previous}`;
+      list.appendChild(row);
+    });
+  }
+
+  // ----- Home page: the guild's newest achievements -----
+  function showFeed() {
+    const list = document.getElementById("feed");
+    if (!list) return;
+    const all = data.recent || [];
+    list.innerHTML = "";
+    if (!all.length) {
+      list.innerHTML = '<p class="no-match">No achievements recorded yet.</p>';
+      return;
+    }
+    all.forEach(a => {
+      const row = document.createElement("div");
+      row.className = "feed-row";
+      row.innerHTML = `
+        ${avatarImg(a)}
+        <span>
+          <span class="feed-line"><span class="player"></span> earned <span class="feat"></span></span>
+          <span class="meta"></span>
+        </span>
+        <span class="when">${timeAgo(a.when)}</span>`;
+      const name = armoryLink({ name: a.player, realm: a.realm }, row.querySelector(".player"));
+      name.style.color = CLASS_COLORS[a.class] || "inherit";
+      row.querySelector(".feat").textContent = a.name;
+      row.querySelector(".meta").textContent = `${a.race} ${a.class}`;
+      list.appendChild(row);
+    });
+  }
+
   // ----- Professions: who can craft what -----
   // Gathering professions are listed separately from crafting ones.
   const GATHERING = ["Mining", "Herbalism", "Skinning"];
@@ -365,6 +506,6 @@ const CLASS_COLORS = {
       if (rows) rows.innerHTML = `<tr><td colspan="3">${note}</td></tr>`;
       const feed = document.getElementById("feed");
       if (feed) feed.innerHTML = `<p class="no-match">${note}</p>`;
-      const roster = document.getElementById("roster-list");
-      if (roster) roster.innerHTML = `<p class="no-match">${note}</p>`;
+      const roster = document.getElementById("roster-rows");
+      if (roster) roster.innerHTML = `<tr><td colspan="5">${note}</td></tr>`;
     });
