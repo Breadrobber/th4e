@@ -138,7 +138,7 @@ const CLASS_COLORS = {
   }
 
   // ----- Roster----- 
-  const RANK_NAMES = ["Guild Master", "Officer", "Raider", "Member", "Initiate"];
+  const RANK_NAMES = ["Guild Master", "Officer", "Raider", "Trial Raider", "Guild Mates", "Alt"];
 
   const rankName = n =>
     typeof n !== "number" ? "" : (RANK_NAMES[n] || (n === 0 ? "Guild Master" : `Rank ${n}`));
