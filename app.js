@@ -137,10 +137,8 @@ const CLASS_COLORS = {
     drawCategories();
   }
 
-  // ----- Roster: one compact row per member -----
-  // Your guild's rank names, Guild Master first. Blizzard only sends the
-  // number, so anything not listed here shows as "Rank 3" and so on.
-  const RANK_NAMES = [];
+  // ----- Roster----- 
+  const RANK_NAMES = ["Guild Master", "Officer", "Raider", "Member", "Initiate"];
 
   const rankName = n =>
     typeof n !== "number" ? "" : (RANK_NAMES[n] || (n === 0 ? "Guild Master" : `Rank ${n}`));
