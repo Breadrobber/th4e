@@ -35,7 +35,12 @@
       <p id="roster-count" class="meta"></p>
       <input type="search" id="roster-search" class="search" placeholder="Search players…" aria-label="Search roster players by name">
       <p class="no-match" id="roster-no-match" hidden>No players match that name.</p>
-      <div class="roster" id="roster-list"></div>
+      <div class="table-wrap">
+        <table class="roster-table">
+          <thead><tr id="roster-head"></tr></thead>
+          <tbody id="roster-rows"></tbody>
+        </table>
+      </div>
     </section>
     <section id="professions">
       <h2>Professions</h2>
