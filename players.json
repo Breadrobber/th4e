@@ -207,21 +207,7 @@
       "value": 96.6
     }
   },
-  "takeovers": [
-    {
-      "label": "Fewest Deaths",
-      "key": "deaths",
-      "name": "Notchief",
-      "value": 1,
-      "previous": "Topchief",
-      "previousValue": 2,
-      "class": "Hunter",
-      "race": "Undead",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/7/202335751-avatar.jpg",
-      "when": 1792209384879
-    }
-  ],
+  "takeovers": [],
   "leadChanges": [
     {
       "label": "Fewest Deaths",
