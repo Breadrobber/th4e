@@ -206,21 +206,7 @@
       "value": 96.6
     }
   },
-  "takeovers": [
-    {
-      "label": "Most Deaths",
-      "key": "deaths",
-      "name": "Rainade",
-      "value": 4556,
-      "previous": "Notchief",
-      "previousValue": 1,
-      "class": "Hunter",
-      "race": "Human",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
-      "when": 1792252716461
-    }
-  ],
+  "takeovers": [],
   "leadChanges": [
     {
       "label": "Most Deaths",
