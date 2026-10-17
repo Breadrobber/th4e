@@ -1,11 +1,12 @@
 :root {
-    --iron: #1c1613;        /* charred wood background */
-    --iron-raised: #2a211c; /* table rows */
-    --blood: #8c1c13;       /* Horde banner red */
-    --blood-deep: #5e120c;
-    --bronze: #c8a253;      /* trim and highlights */
-    --bone: #eadfc8;        /* main text */
-    --ash: #9c8e78;         /* secondary text */
+    --iron: #161514;        /* page background */
+    --iron-raised: #201e1d; /* panels and table rows */
+    --blood: #d13f17;       /* warm red, used sparingly */
+    --blood-deep: #8c2a0f;
+    --bronze: #ffbd0a;      /* amber accent: headings, trim, highlights */
+    --bone: #e6e3e0;        /* main text */
+    --ash: #a29f9f;         /* secondary text */
+    --line: #2a2725;        /* thin borders between panels */
     --display: "Montserrat", "Palatino Linotype", Georgia, serif;
     --body: "Alegreya", Georgia, "Times New Roman", serif;
   }
@@ -35,7 +36,7 @@
     top: 0;
     z-index: 10;
     background: var(--iron);
-    border-bottom: 2px solid var(--blood);
+    border-bottom: 2px solid var(--line);
   }
   .menu ul {
     list-style: none;
@@ -80,7 +81,7 @@
   body:has(.board-layout) main { width: min(96%, 58rem); }
 
   .notice {
-    border: 1px solid #4a3a2c;
+    border: 1px solid var(--line);
     border-left: 4px solid var(--bronze);
     padding: 0.75rem 1rem;
     margin-bottom: 2rem;
@@ -99,7 +100,7 @@
     margin-bottom: 1.25rem;
     background: var(--iron-raised);
     color: var(--bone);
-    border: 1px solid #5a4636;
+    border: 1px solid var(--line);
     border-radius: 3px;
   }
   .search::placeholder { color: var(--ash); }
@@ -136,7 +137,7 @@
     font-size: 1rem;
     padding: 0.45rem 0.7rem;
     color: var(--ash);
-    border-left: 3px solid #4a3a2c;
+    border-left: 3px solid var(--line);
   }
   .cat-btn:hover { color: var(--bone); }
   .cat-btn[aria-expanded="true"] {
@@ -201,13 +202,13 @@
   .r1 .rank { background: var(--bronze); }
   .r2 .rank { background: #b9b2a6; }
   .r3 .rank { background: #a8693f; }
-  .r1 td { box-shadow: inset 0 1px 0 #4d3c22, inset 0 -1px 0 #4d3c22; }
+  .r1 td { box-shadow: inset 0 1px 0 #3a2f12, inset 0 -1px 0 #3a2f12; }
 
   .player-cell { display: flex; align-items: center; gap: 0.65rem; }
   .avatar {
     width: 40px; height: 40px;
     border-radius: 4px;
-    border: 1px solid #5a4636;
+    border: 1px solid var(--line);
     flex-shrink: 0;
   }
   .player { font-weight: 700; }
@@ -239,10 +240,9 @@
   .roster-table th.rt-right { text-align: right; }
   .rt-name { font-weight: 700; }
   .rt-race, .rt-class { color: var(--ash); }
-  .roster-table th:nth-child(2), .roster-table td:nth-child(2),
-  .roster-table th:nth-child(3), .roster-table td:nth-child(3),
-  .roster-table th:nth-child(4), .roster-table td:nth-child(4) { width: 10rem; }
-  .roster-table th:last-child, .roster-table td:last-child { width: 4rem; }
+  /* Name takes the leftover space; the rest share the width evenly */
+  .roster-table th:not(:first-child),
+  .roster-table td:not(:first-child) { width: 7rem; }
   .roster-table th { white-space: nowrap; }
   .rt-rank { color: var(--ash); font-size: 0.85rem; }
   .rt-rank.rt-officer { color: var(--bronze); }
@@ -278,10 +278,10 @@
     font: inherit; font-size: 1rem;
     padding: 0.45rem 1rem;
     background: transparent; color: var(--bone);
-    border: 1px solid #5a4636; border-radius: 3px; cursor: pointer;
+    border: 1px solid var(--line); border-radius: 3px; cursor: pointer;
   }
   .chart-tabs button:hover { border-color: var(--bronze); }
-  .chart-tabs button[aria-pressed="true"] { background: var(--blood); border-color: var(--bronze); }
+  .chart-tabs button[aria-pressed="true"] { background: var(--bronze); border-color: var(--bronze); color: var(--iron); }
 
   .bars { display: grid; gap: 0.45rem; }
   .bar-row { display: grid; grid-template-columns: 9rem 1fr 2.5rem; align-items: center; gap: 0.75rem; }
