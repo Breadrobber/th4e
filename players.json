@@ -40,11 +40,10 @@
     },
     {
       "key": "deaths",
-      "label": "Fewest Deaths",
-      "order": "asc",
+      "label": "Most Deaths",
+      "order": "desc",
       "group": "Deaths",
-      "stat": "Total deaths",
-      "column": "Deaths"
+      "stat": "Total deaths"
     },
     {
       "key": "falling",
@@ -155,8 +154,8 @@
       "value": 4356
     },
     "deaths": {
-      "name": "Notchief",
-      "value": 1
+      "name": "Rainade",
+      "value": 4556
     },
     "falling": {
       "name": "Rainade",
@@ -207,8 +206,35 @@
       "value": 96.6
     }
   },
-  "takeovers": [],
+  "takeovers": [
+    {
+      "label": "Most Deaths",
+      "key": "deaths",
+      "name": "Rainade",
+      "value": 4556,
+      "previous": "Notchief",
+      "previousValue": 1,
+      "class": "Hunter",
+      "race": "Human",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
+      "when": 1792252716461
+    }
+  ],
   "leadChanges": [
+    {
+      "label": "Most Deaths",
+      "key": "deaths",
+      "name": "Rainade",
+      "value": 4556,
+      "previous": "Notchief",
+      "previousValue": 1,
+      "class": "Hunter",
+      "race": "Human",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/52/160698420-avatar.jpg",
+      "when": 1792252716461
+    },
     {
       "label": "Fewest Deaths",
       "key": "deaths",
@@ -259,19 +285,6 @@
       "race": "Night Elf",
       "realm": "sargeras",
       "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
-      "when": 1791913994825
-    },
-    {
-      "label": "Baron kills",
-      "key": "baronKills",
-      "name": "Notfriday",
-      "value": 9,
-      "previous": "Fakeperson",
-      "previousValue": 9,
-      "class": "Monk",
-      "race": "Void Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/219/168269787-avatar.jpg",
       "when": 1791913994825
     }
   ],
