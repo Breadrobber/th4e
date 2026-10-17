@@ -38,7 +38,7 @@ const CATEGORIES = [
   { key: "hearths",      label: "Times Hearthed",     order: "desc", group: "Character",    stat: "Number of times hearthed" },
   { key: "fishCaught",   label: "Fish Caught",        order: "desc", group: "Character",    stat: "Fish caught" },
 
-  { key: "deaths",       label: "Fewest Deaths",      order: "asc",  group: "Deaths",       stat: "Total deaths", column: "Deaths" },
+  { key: "deaths",       label: "Most Deaths",        order: "desc", group: "Deaths",       stat: "Total deaths" },
   { key: "falling",      label: "Falling Deaths",     order: "desc", group: "Deaths",       stat: "Deaths from falling" },
 
   { key: "bgWins",       label: "Battleground Wins",  order: "desc", group: "Combat",       stat: "Battlegrounds won" },
