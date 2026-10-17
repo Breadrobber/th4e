@@ -202,7 +202,7 @@
   .r1 .rank { background: var(--bronze); }
   .r2 .rank { background: #b9b2a6; }
   .r3 .rank { background: #a8693f; }
-  .r1 td { box-shadow: inset 0 1px 0 #3a2f12, inset 0 -1px 0 #3a2f12; }
+  
 
   .player-cell { display: flex; align-items: center; gap: 0.65rem; }
   .avatar {
