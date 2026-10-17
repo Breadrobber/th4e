@@ -2,7 +2,7 @@
   "guild": "Not Clan",
   "faction": "Alliance",
   "sampleData": false,
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "categories": [
     {
       "key": "itemLevel",
@@ -155,8 +155,8 @@
       "value": 4356
     },
     "deaths": {
-      "name": "Topchief",
-      "value": 2
+      "name": "Notchief",
+      "value": 1
     },
     "falling": {
       "name": "Rainade",
@@ -211,18 +211,31 @@
     {
       "label": "Fewest Deaths",
       "key": "deaths",
-      "name": "Topchief",
-      "value": 2,
-      "previous": "Notchief",
-      "previousValue": 1,
-      "class": "Warrior",
-      "race": "Dwarf",
-      "realm": "korgath",
-      "avatar": "https://render.worldofwarcraft.com/us/character/korgath/69/182015301-avatar.jpg",
-      "when": 1792183762876
+      "name": "Notchief",
+      "value": 1,
+      "previous": "Topchief",
+      "previousValue": 2,
+      "class": "Hunter",
+      "race": "Undead",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/7/202335751-avatar.jpg",
+      "when": 1792209384879
     }
   ],
   "leadChanges": [
+    {
+      "label": "Fewest Deaths",
+      "key": "deaths",
+      "name": "Notchief",
+      "value": 1,
+      "previous": "Topchief",
+      "previousValue": 2,
+      "class": "Hunter",
+      "race": "Undead",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/7/202335751-avatar.jpg",
+      "when": 1792209384879
+    },
     {
       "label": "Fewest Deaths",
       "key": "deaths",
@@ -274,66 +287,53 @@
       "realm": "sargeras",
       "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/219/168269787-avatar.jpg",
       "when": 1791913994825
-    },
-    {
-      "label": "Lich King kills",
-      "key": "heroicLKkills",
-      "name": "Notthursday",
-      "value": 18,
-      "previous": "Fakeperson",
-      "previousValue": 18,
-      "class": "Demon Hunter",
-      "race": "Night Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/36/186177316-avatar.jpg",
-      "when": 1791913994825
     }
   ],
   "recent": [
     {
-      "player": "Sadfish",
-      "class": "Monk",
-      "race": "Dwarf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/244/200094452-avatar.jpg",
-      "name": "Midnight Superior",
-      "when": 1773918678000
+      "player": "Magnus",
+      "class": "Mage",
+      "race": "Blood Elf",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/149/224738965-avatar.jpg",
+      "name": "The War of Light and Shadow",
+      "when": 1790972220000
     },
     {
-      "player": "Sadfish",
-      "class": "Monk",
-      "race": "Dwarf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/244/200094452-avatar.jpg",
-      "name": "End of the Line",
-      "when": 1773876489000
+      "player": "Magnus",
+      "class": "Mage",
+      "race": "Blood Elf",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/149/224738965-avatar.jpg",
+      "name": "Curio Enthusiast: Midnight",
+      "when": 1790965320000
     },
     {
-      "player": "Notfriday",
-      "class": "Monk",
-      "race": "Void Elf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/219/168269787-avatar.jpg",
-      "name": "Midnight Superior",
-      "when": 1773858734000
+      "player": "Magnus",
+      "class": "Mage",
+      "race": "Blood Elf",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/149/224738965-avatar.jpg",
+      "name": "Midnight Delves: Tier 6 (Season 2)",
+      "when": 1790965260000
     },
     {
-      "player": "Sadfish",
-      "class": "Monk",
-      "race": "Dwarf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/244/200094452-avatar.jpg",
-      "name": "Honor Level 25",
-      "when": 1773853380000
+      "player": "Magnus",
+      "class": "Mage",
+      "race": "Blood Elf",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/149/224738965-avatar.jpg",
+      "name": "Heroic: Den of Nalorakk",
+      "when": 1790962423000
     },
     {
-      "player": "Sadfish",
-      "class": "Monk",
-      "race": "Dwarf",
-      "realm": "sargeras",
-      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/244/200094452-avatar.jpg",
-      "name": "Couponing for Beginners",
-      "when": 1773853380000
+      "player": "Magnus",
+      "class": "Mage",
+      "race": "Blood Elf",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/149/224738965-avatar.jpg",
+      "name": "Shop Smart, Shop Pet...Smart",
+      "when": 1790628240000
     }
   ],
   "players": [
@@ -1275,6 +1275,164 @@
         "winRate": null
       },
       "professions": []
+    },
+    {
+      "name": "Notchief",
+      "rank": 1,
+      "class": "Hunter",
+      "race": "Undead",
+      "gender": "FEMALE",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/7/202335751-avatar.jpg",
+      "stats": {
+        "level": 31,
+        "achievementPoints": 20155,
+        "itemLevel": 116,
+        "mounts": 290,
+        "quests": 311,
+        "flightPath": 3,
+        "hearths": null,
+        "fishCaught": null,
+        "deaths": 1,
+        "falling": null,
+        "bgWins": null,
+        "duelsWon": null,
+        "lold": null,
+        "cheers": 1,
+        "elixirs": null,
+        "beverages": null,
+        "foodEaten": null,
+        "healthstones": null,
+        "honorKills": null,
+        "pvpDeaths": null,
+        "winRate": null
+      },
+      "professions": []
+    },
+    {
+      "name": "Lazyknight",
+      "rank": 1,
+      "class": "Death Knight",
+      "race": "Dwarf",
+      "gender": "MALE",
+      "realm": "sargeras",
+      "avatar": "https://render.worldofwarcraft.com/us/character/sargeras/226/202393314-avatar.jpg",
+      "stats": {
+        "level": 80,
+        "achievementPoints": 13810,
+        "itemLevel": 125,
+        "mounts": 196,
+        "quests": 925,
+        "flightPath": 4,
+        "hearths": 44,
+        "fishCaught": null,
+        "deaths": 23,
+        "falling": 3,
+        "bgWins": 1,
+        "duelsWon": 66,
+        "lold": null,
+        "cheers": null,
+        "elixirs": 43,
+        "beverages": null,
+        "foodEaten": null,
+        "healthstones": 1,
+        "honorKills": 85,
+        "pvpDeaths": 8,
+        "winRate": 91.4
+      },
+      "professions": []
+    },
+    {
+      "name": "Magnus",
+      "rank": 4,
+      "class": "Mage",
+      "race": "Blood Elf",
+      "gender": "MALE",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/149/224738965-avatar.jpg",
+      "stats": {
+        "level": 90,
+        "achievementPoints": 6050,
+        "itemLevel": 280,
+        "mounts": 70,
+        "quests": 2443,
+        "flightPath": 30,
+        "hearths": 31,
+        "fishCaught": 59,
+        "deaths": 172,
+        "falling": 4,
+        "bgWins": null,
+        "duelsWon": null,
+        "lold": null,
+        "cheers": 1,
+        "elixirs": null,
+        "beverages": 2,
+        "foodEaten": 124,
+        "healthstones": null,
+        "honorKills": 12,
+        "pvpDeaths": 6,
+        "winRate": 66.7
+      },
+      "professions": [
+        {
+          "name": "Herbalism",
+          "skill": 91,
+          "max": 100,
+          "specialization": null
+        },
+        {
+          "name": "Alchemy",
+          "skill": 38,
+          "max": 100,
+          "specialization": null
+        }
+      ]
+    },
+    {
+      "name": "Betrayedyou",
+      "rank": 4,
+      "class": "Hunter",
+      "race": "Human",
+      "gender": "MALE",
+      "realm": "boulderfist",
+      "avatar": "https://render.worldofwarcraft.com/us/character/boulderfist/86/232851542-avatar.jpg",
+      "stats": {
+        "level": 80,
+        "achievementPoints": 5875,
+        "itemLevel": 87,
+        "mounts": 60,
+        "quests": 1237,
+        "flightPath": 167,
+        "hearths": 71,
+        "fishCaught": 62,
+        "deaths": 164,
+        "falling": 17,
+        "bgWins": null,
+        "duelsWon": null,
+        "lold": null,
+        "cheers": 1,
+        "elixirs": null,
+        "beverages": 7,
+        "foodEaten": 2,
+        "healthstones": 2,
+        "honorKills": 3,
+        "pvpDeaths": 13,
+        "winRate": 18.8
+      },
+      "professions": [
+        {
+          "name": "Skinning",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        },
+        {
+          "name": "Leatherworking",
+          "skill": 300,
+          "max": 300,
+          "specialization": null
+        }
+      ]
     }
   ]
 }
